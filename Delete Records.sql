@@ -1,0 +1,6 @@
+DELETE FROM Course;
+DELETE FROM Department;
+DELETE FROM Professor;
+DELETE FROM Rate;
+DELETE FROM SGrade;
+DELETE FROM Student;
