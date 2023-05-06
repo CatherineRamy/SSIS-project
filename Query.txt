@@ -1,0 +1,9 @@
+SELECT Student.StudentID,Student.StudentSemester, SUM(Grade) FROM SGrade,Student
+where Student.StudentID =SGrade.StudentID
+GROUP BY Student.StudentID,Student.StudentSemester order by Student.StudentSemester;
+
+
+SELECT Student.StudentID , DepartmentName , SUM(Grade)from 
+Student, Department, SGrade where Student.DepartmentID=Department.DepartmentID and
+Student.StudentID=SGrade.StudentID 
+GROUP BY DepartmentName,Student.StudentID order by DepartmentName;
