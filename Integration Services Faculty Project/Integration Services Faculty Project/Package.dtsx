@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{C6972C80-D725-40BD-AFEB-D4439B239D35}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{8897A4DE-2B29-4927-AFC5-BDD2986E0BF7}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,16 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=DESKTOP-9RO1AFM;Initial Catalog=FacultyDatabase;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{DD0758BB-0346-46BA-A0C6-8A878D3E5CA6}DESKTOP-9RO1AFM.FacultyDatabase;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-9RO1AFM.FacultyDatabase1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{DD0360F9-D202-4BED-9C0A-8A8F6C5EE4B9}"
+      DTS:ObjectName="DESKTOP-9RO1AFM.FacultyDatabase1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-9RO1AFM;Initial Catalog=FacultyDatabase;Integrated Security=True;Application Name=SSIS-Package-{DD0360F9-D202-4BED-9C0A-8A8F6C5EE4B9}DESKTOP-9RO1AFM.FacultyDatabase1;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -70,6 +80,23 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{DD0758BB-0346-46BA-A0C6-8A878D3E5CA6}"
           SQLTask:SqlStatementSource="DELETE FROM Course;&#xA;DELETE FROM Department;&#xA;DELETE FROM Professor;&#xA;DELETE FROM Rate;&#xA;DELETE FROM SGrade;&#xA;DELETE FROM Student;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete all records from STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F7D903D3-BCB2-4CDA-BB93-46B7F84CFC22}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete all records from STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E4378A7B-BAFE-4F6E-B344-664BF0F5D9CD}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE  STG_AVG_GRADE;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -2684,6 +2711,177 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9C02016E-2A93-4CD1-849C-08D204F16A30}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\STG\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."Student"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STG\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-9RO1AFM.FacultyDatabase1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-9RO1AFM.FacultyDatabase1]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].Columns[StudentID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[StudentID]"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].Columns[StudentID]"
+                      name="StudentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].Columns[StudentGender]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[StudentGender]"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].Columns[StudentGender]"
+                      name="StudentGender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].Columns[StudentSemester]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[StudentSemester]"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].Columns[StudentSemester]"
+                      name="StudentSemester"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].Columns[DepartmentID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DepartmentID]"
+                      length="25"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].Columns[DepartmentID]"
+                      name="DepartmentID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[StudentID]"
+                      dataType="i4"
+                      name="StudentID" />
+                    <externalMetadataColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[StudentGender]"
+                      dataType="nText"
+                      name="StudentGender" />
+                    <externalMetadataColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[StudentSemester]"
+                      dataType="i4"
+                      name="StudentSemester" />
+                    <externalMetadataColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[DepartmentID]"
+                      dataType="wstr"
+                      length="25"
+                      name="DepartmentID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[StudentID]"
+                      dataType="i4"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[StudentID]"
+                      name="StudentID" />
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[StudentGender]"
+                      dataType="nText"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[StudentGender]"
+                      name="StudentGender" />
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[StudentSemester]"
+                      dataType="i4"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[StudentSemester]"
+                      name="StudentSemester" />
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DepartmentID]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[DepartmentID]"
+                      name="DepartmentID" />
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STG\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -2694,6 +2892,22 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\From Excel to Database" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1750283A-26A1-4495-B42F-B61EA93EB19C}"
+      DTS:From="Package\From Excel to Database"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Delete all records from STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{CA691559-7F99-4709-9B5E-D3DAB300ADF6}"
+      DTS:From="Package\Delete all records from STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\STG" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2706,24 +2920,24 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="189.6,41.6"
-          Id="Package\From Excel to Database"
-          TopLeft="271.666651823455,130.866665756636" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="159.2,41.6"
           Id="Package\Delete all records"
           TopLeft="294.999983881911,46.7999996745586" />
+        <NodeLayout
+          Size="189.6,41.6"
+          Id="Package\From Excel to Database"
+          TopLeft="271.666651823455,130.866665756636" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="374.599983881911,88.3999996745586">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.13333205845674,42.4666660820774"
+              EndConnector="-8.13333205845601,42.4666660820774"
               Start="0,0"
-              End="-8.13333205845674,34.9666660820774">
+              End="-8.13333205845601,34.9666660820774">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2734,13 +2948,89 @@
                     Point2="0,21.2333330410387"
                     Point3="-4,21.2333330410387" />
                   <mssgle:LineSegment
-                    End="-4.13333205845674,21.2333330410387" />
+                    End="-4.13333205845601,21.2333330410387" />
                   <mssgle:CubicBezierSegment
-                    Point1="-4.13333205845674,21.2333330410387"
-                    Point2="-8.13333205845674,21.2333330410387"
-                    Point3="-8.13333205845674,25.2333330410387" />
+                    Point1="-4.13333205845601,21.2333330410387"
+                    Point2="-8.13333205845601,21.2333330410387"
+                    Point3="-8.13333205845601,25.2333330410387" />
                   <mssgle:LineSegment
-                    End="-8.13333205845674,34.9666660820774" />
+                    End="-8.13333205845601,34.9666660820774" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="100,41.6"
+          Id="Package\STG"
+          TopLeft="316.666649364764,279.066664726072" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Delete all records from STG"
+          TopLeft="289.166650867297,199.333331947194" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="366.466651823455,172.466665756636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26.2999990438423,26.8666661905582"
+              Start="0,0"
+              End="26.2999990438423,19.3666661905582">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.43333309527912" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.43333309527912"
+                    Point2="0,13.4333330952791"
+                    Point3="4,13.4333330952791" />
+                  <mssgle:LineSegment
+                    End="22.2999990438423,13.4333330952791" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.2999990438423,13.4333330952791"
+                    Point2="26.2999990438423,13.4333330952791"
+                    Point3="26.2999990438423,17.4333330952791" />
+                  <mssgle:LineSegment
+                    End="26.2999990438423,19.3666661905582" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="392.766650867297,240.933331947194">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26.1000015025336,38.1333327788775"
+              Start="0,0"
+              End="-26.1000015025336,30.6333327788775">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0666663894388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.0666663894388"
+                    Point2="0,19.0666663894388"
+                    Point3="-4,19.0666663894388" />
+                  <mssgle:LineSegment
+                    End="-22.1000015025336,19.0666663894388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.1000015025336,19.0666663894388"
+                    Point2="-26.1000015025336,19.0666663894388"
+                    Point3="-26.1000015025336,23.0666663894388" />
+                  <mssgle:LineSegment
+                    End="-26.1000015025336,30.6333327788775" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3309,6 +3599,26 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\STG\ADO NET Source"
+          TopLeft="154.14285484595,28.9999995678664" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
