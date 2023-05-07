@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="137"
-  DTS:VersionGUID="{8012E057-0D97-4D4E-BAEB-30DA783F3DA6}">
+  DTS:VersionBuild="147"
+  DTS:VersionGUID="{0DE4A91A-602C-413B-B486-E89052C7DA51}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -89,6 +89,30 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-RA45GHS0]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{64055619-BDAC-4AF2-907C-CD09D9302743}"
+      DTS:ObjectName="LAPTOP-RA45GHS0">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-RA45GHS0;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{64055619-BDAC-4AF2-907C-CD09D9302743}LAPTOP-RA45GHS0;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F9650AB7-9070-4950-9340-9848910A21B5}"
+      DTS:ObjectName="LAPTOP-RA45GHS0\SQLEXPRESS.AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-RA45GHS0\SQLEXPRESS;Initial Catalog=AdventureWorks;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{F9650AB7-9070-4950-9340-9848910A21B5}LAPTOP-RA45GHS0\SQLEXPRESS.AdventureWorks;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.FacultyDB]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{AE979843-63AD-4544-B481-CFAC5AA16AAE}"
@@ -122,6 +146,30 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=LAPTOP-RA45GHS0\SQLEXPRESS;Initial Catalog=Faculty_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{9A303E9D-2B76-4EB1-9D90-844B7086BAC4}LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{ED85871B-19F6-4024-BA19-6EC07D56D2B5}"
+      DTS:ObjectName="LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-RA45GHS0\SQLEXPRESS;Initial Catalog=Faculty_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{ED85871B-19F6-4024-BA19-6EC07D56D2B5}LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.temp]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{397906F0-3A7C-40E1-964E-01129A2F603D}"
+      DTS:ObjectName="LAPTOP-RA45GHS0\SQLEXPRESS.temp">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-RA45GHS0\SQLEXPRESS;Initial Catalog=temp;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{397906F0-3A7C-40E1-964E-01129A2F603D}LAPTOP-RA45GHS0\SQLEXPRESS.temp;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -5480,6 +5528,363 @@ where [refTable].[ProfessorID] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\STG\Lookup 4 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 4 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Professor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Professor]) [refTable]
+where [refTable].[ProfessorID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProfessorID" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProfessorName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ProfessorEmail" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\STG\Merge Join.Outputs[Merge Join Output].Columns[ProfessorID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STG\Lookup 4 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.FacultyDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.FacultyDB]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\STG\Lookup 4 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STG\Lookup 4 1.Inputs[Lookup Input].Columns[ProfessorID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProfessorID"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[ProfessorID]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProfessorID</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProfessorID</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STG\Lookup 4 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\STG\Lookup 4 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\Lookup 4 1.Outputs[Lookup Match Output].Columns[ProfessorName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\STG\Lookup 4 1.Outputs[Lookup Match Output].Columns[ProfessorName]"
+                      name="ProfessorName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProfessorName</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\STG\Lookup 4 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\STG\Lookup 4 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\STG\Lookup 4 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\STG\Lookup 4 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\Lookup 4 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STG\Lookup 4 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STG\Lookup 4 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STG\Lookup 4 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STG\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\STG\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STG\Merge Join.Inputs[Merge Join Left Input].Columns[CourseRate]"
+                      cachedDataType="r8"
+                      cachedName="CourseRate"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\STG\Sort 3.Outputs[Sort Output].Columns[CourseRate]" />
+                    <inputColumn
+                      refId="Package\STG\Merge Join.Inputs[Merge Join Left Input].Columns[CourseID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="CourseID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\STG\Sort 3.Outputs[Sort Output].Columns[CourseID]" />
+                    <inputColumn
+                      refId="Package\STG\Merge Join.Inputs[Merge Join Left Input].Columns[StudentID]"
+                      cachedDataType="i4"
+                      cachedName="StudentID"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\STG\Sort 3.Outputs[Sort Output].Columns[StudentID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\STG\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STG\Merge Join.Inputs[Merge Join Right Input].Columns[CourseID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="CourseID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseID]" />
+                    <inputColumn
+                      refId="Package\STG\Merge Join.Inputs[Merge Join Right Input].Columns[CourseName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="55"
+                      cachedName="CourseName"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseName]" />
+                    <inputColumn
+                      refId="Package\STG\Merge Join.Inputs[Merge Join Right Input].Columns[CourseSemester]"
+                      cachedDataType="i4"
+                      cachedName="CourseSemester"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseSemester]" />
+                    <inputColumn
+                      refId="Package\STG\Merge Join.Inputs[Merge Join Right Input].Columns[ProfessorID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProfessorID"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\STG\Sort 4.Outputs[Sort Output].Columns[ProfessorID]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STG\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseRate]"
+                      dataType="r8"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseRate]"
+                      name="CourseRate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\STG\Merge Join.Inputs[Merge Join Left Input].Columns[CourseRate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseID]"
+                      name="CourseID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\STG\Merge Join.Inputs[Merge Join Left Input].Columns[CourseID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseID (1)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseID (1)]"
+                      name="CourseID (1)">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\STG\Merge Join.Inputs[Merge Join Right Input].Columns[CourseID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="55"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseName]"
+                      name="CourseName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\STG\Merge Join.Inputs[Merge Join Right Input].Columns[CourseName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseSemester]"
+                      dataType="i4"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseSemester]"
+                      name="CourseSemester">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\STG\Merge Join.Inputs[Merge Join Right Input].Columns[CourseSemester]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[ProfessorID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[ProfessorID]"
+                      name="ProfessorID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\STG\Merge Join.Inputs[Merge Join Right Input].Columns[ProfessorID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\STG\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -6006,6 +6411,190 @@ where [refTable].[ProfessorID] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\STG\OLE DB Destination 2 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination 2 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[OLE DB Destination 2 1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STG\OLE DB Destination 2 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.temp]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.temp]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].Columns[CourseID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="CourseID"
+                      cachedSortKeyPosition="-2"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[CourseID]"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseID]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].Columns[CourseRate]"
+                      cachedDataType="r8"
+                      cachedName="CourseRate"
+                      cachedSortKeyPosition="-1"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[CourseRate]"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseRate]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].Columns[CourseName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="55"
+                      cachedName="CourseName"
+                      cachedSortKeyPosition="-3"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[CourseName]"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseName]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].Columns[ProfessorName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProfessorName"
+                      cachedSortKeyPosition="-5"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorName]"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[ProfessorName]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].Columns[ProfessorID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProfessorID"
+                      cachedSortKeyPosition="-4"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorID]"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[ProfessorID]" />
+                    <inputColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].Columns[Current_Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Current_Date"
+                      externalMetadataColumnId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
+                      lineageId="Package\STG\time_dimension 2 1.Outputs[Derived Column Output].Columns[Current_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="CourseID" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[CourseRate]"
+                      dataType="r8"
+                      name="CourseRate" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[CourseName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="55"
+                      name="CourseName" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProfessorName" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ProfessorID" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
+                      dataType="dbTimeStamp"
+                      name="Current_Date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STG\OLE DB Destination 2 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Destination 2 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Destination 2 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Destination 2 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\STG\OLE DB Source"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
@@ -6294,6 +6883,332 @@ where [refTable].[ProfessorID] = ?</property>
                       refId="Package\STG\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\STG\OLE DB Source 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STG\OLE DB Source 1 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source 1 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Rate]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STG\OLE DB Source 1 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.FacultyDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.FacultyDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[StudentID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[StudentID]"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[StudentID]"
+                      name="StudentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseID]"
+                      length="10"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[CourseID]"
+                      name="CourseID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[CourseRate]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseRate]"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[CourseRate]"
+                      name="CourseRate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[StudentID]"
+                      dataType="i4"
+                      name="StudentID" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="CourseID" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseRate]"
+                      dataType="r8"
+                      name="CourseRate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[StudentID]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[StudentID]"
+                      name="StudentID" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[CourseID]"
+                      name="CourseID" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[CourseRate]"
+                      dataType="r8"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[CourseRate]"
+                      name="CourseRate" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STG\OLE DB Source 1 1 1"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source 1 1 1"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Course]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\STG\OLE DB Source 1 1 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.FacultyDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.FacultyDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseID]"
+                      length="10"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseID]"
+                      name="CourseID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseName]"
+                      length="55"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseName]"
+                      name="CourseName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseSemester]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseSemester]"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseSemester]"
+                      name="CourseSemester"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[ProfessorID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].ExternalColumns[ProfessorID]"
+                      length="10"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[ProfessorID]"
+                      name="ProfessorID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="CourseID" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="55"
+                      name="CourseName" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].ExternalColumns[CourseSemester]"
+                      dataType="i4"
+                      name="CourseSemester" />
+                    <externalMetadataColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].ExternalColumns[ProfessorID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="ProfessorID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[CourseID]"
+                      name="CourseID" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[CourseName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="55"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[CourseName]"
+                      name="CourseName" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[CourseSemester]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[CourseSemester]"
+                      name="CourseSemester" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[ProfessorID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[ProfessorID]"
+                      name="ProfessorID" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -7008,6 +7923,513 @@ where [refTable].[ProfessorID] = ?</property>
               </outputs>
             </component>
             <component
+              refId="Package\STG\Sort 2 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 2 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\STG\Sort 2 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STG\Sort 2 1.Inputs[Sort Input].Columns[CourseRate]"
+                      cachedDataType="r8"
+                      cachedName="CourseRate"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseRate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 2 1.Inputs[Sort Input].Columns[CourseID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="CourseID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 2 1.Inputs[Sort Input].Columns[CourseName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="55"
+                      cachedName="CourseName"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 2 1.Inputs[Sort Input].Columns[ProfessorID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProfessorID"
+                      lineageId="Package\STG\Merge Join.Outputs[Merge Join Output].Columns[ProfessorID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 2 1.Inputs[Sort Input].Columns[ProfessorName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProfessorName"
+                      lineageId="Package\STG\Lookup 4 1.Outputs[Lookup Match Output].Columns[ProfessorName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">-5</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STG\Sort 2 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseRate]"
+                      dataType="r8"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseRate]"
+                      name="CourseRate"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseRate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseID]"
+                      name="CourseID"
+                      sortKeyPosition="-2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="55"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[CourseName]"
+                      name="CourseName"
+                      sortKeyPosition="-3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\Merge Join.Outputs[Merge Join Output].Columns[CourseName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[ProfessorID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[ProfessorID]"
+                      name="ProfessorID"
+                      sortKeyPosition="-4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\Merge Join.Outputs[Merge Join Output].Columns[ProfessorID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[ProfessorName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\STG\Sort 2 1.Outputs[Sort Output].Columns[ProfessorName]"
+                      name="ProfessorName"
+                      sortKeyPosition="-5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\Lookup 4 1.Outputs[Lookup Match Output].Columns[ProfessorName]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STG\Sort 3"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 3"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\STG\Sort 3.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STG\Sort 3.Inputs[Sort Input].Columns[CourseRate]"
+                      cachedDataType="r8"
+                      cachedName="CourseRate"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[CourseRate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 3.Inputs[Sort Input].Columns[CourseID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="CourseID"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[CourseID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 3.Inputs[Sort Input].Columns[StudentID]"
+                      cachedDataType="i4"
+                      cachedName="StudentID"
+                      lineageId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[StudentID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STG\Sort 3.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\Sort 3.Outputs[Sort Output].Columns[CourseRate]"
+                      dataType="r8"
+                      lineageId="Package\STG\Sort 3.Outputs[Sort Output].Columns[CourseRate]"
+                      name="CourseRate"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[CourseRate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 3.Outputs[Sort Output].Columns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\Sort 3.Outputs[Sort Output].Columns[CourseID]"
+                      name="CourseID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[CourseID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 3.Outputs[Sort Output].Columns[StudentID]"
+                      dataType="i4"
+                      lineageId="Package\STG\Sort 3.Outputs[Sort Output].Columns[StudentID]"
+                      name="StudentID"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output].Columns[StudentID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\STG\Sort 4"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 4"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\STG\Sort 4.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\STG\Sort 4.Inputs[Sort Input].Columns[CourseID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="CourseID"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 4.Inputs[Sort Input].Columns[CourseName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="55"
+                      cachedName="CourseName"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 4.Inputs[Sort Input].Columns[CourseSemester]"
+                      cachedDataType="i4"
+                      cachedName="CourseSemester"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseSemester]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\STG\Sort 4.Inputs[Sort Input].Columns[ProfessorID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="ProfessorID"
+                      lineageId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[ProfessorID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STG\Sort 4.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseID]"
+                      name="CourseID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="55"
+                      lineageId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseName]"
+                      name="CourseName"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseSemester]"
+                      dataType="i4"
+                      lineageId="Package\STG\Sort 4.Outputs[Sort Output].Columns[CourseSemester]"
+                      name="CourseSemester"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[CourseSemester]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\STG\Sort 4.Outputs[Sort Output].Columns[ProfessorID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\STG\Sort 4.Outputs[Sort Output].Columns[ProfessorID]"
+                      name="ProfessorID"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output].Columns[ProfessorID]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\STG\time_dimension"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -7153,6 +8575,79 @@ where [refTable].[ProfessorID] = ?</property>
                 </output>
               </outputs>
             </component>
+            <component
+              refId="Package\STG\time_dimension 2 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="time_dimension 2 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\STG\time_dimension 2 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\STG\time_dimension 2 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\STG\time_dimension 2 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\time_dimension 2 1.Outputs[Derived Column Output].Columns[Current_Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\STG\time_dimension 2 1.Outputs[Derived Column Output].Columns[Current_Date]"
+                      name="Current_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\STG\time_dimension 2 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\STG\time_dimension 2 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\STG\time_dimension 2 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\STG\time_dimension 2 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\STG\time_dimension 2 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\STG\time_dimension 2 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
           </components>
           <paths>
             <path
@@ -7176,16 +8671,6 @@ where [refTable].[ProfessorID] = ?</property>
               name="Conditional Split Default Output"
               startId="Package\STG\Conditional Split.Outputs[Conditional Split Default Output]" />
             <path
-              refId="Package\STG.Paths[Derived Column Output2]"
-              endId="Package\STG\OLE DB Destination 2.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\STG\time_dimension 2.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\STG.Paths[Derived Column Output3]"
-              endId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\STG\Derived Column 1.Outputs[Derived Column Output]" />
-            <path
               refId="Package\STG.Paths[Derived Column Output]"
               endId="Package\STG\time_dimension.Inputs[Derived Column Input]"
               name="Derived Column Output"
@@ -7196,55 +8681,105 @@ where [refTable].[ProfessorID] = ?</property>
               name="Derived Column Output"
               startId="Package\STG\time_dimension.Outputs[Derived Column Output]" />
             <path
-              refId="Package\STG.Paths[Lookup Match Output]"
-              endId="Package\STG\Sort 1.Inputs[Sort Input]"
-              name="Lookup Match Output"
-              startId="Package\STG\Lookup 2.Outputs[Lookup Match Output]" />
+              refId="Package\STG.Paths[Derived Column Output2]"
+              endId="Package\STG\OLE DB Destination 2.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\STG\time_dimension 2.Outputs[Derived Column Output]" />
             <path
-              refId="Package\STG.Paths[Lookup Match Output1]"
-              endId="Package\STG\Lookup 4.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\STG\Lookup 3.Outputs[Lookup Match Output]" />
+              refId="Package\STG.Paths[Derived Column Output3]"
+              endId="Package\STG\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\STG\Derived Column 1.Outputs[Derived Column Output]" />
             <path
-              refId="Package\STG.Paths[Lookup Match Output2]"
-              endId="Package\STG\Sort 2.Inputs[Sort Input]"
-              name="Lookup Match Output"
-              startId="Package\STG\Lookup 4.Outputs[Lookup Match Output]" />
+              refId="Package\STG.Paths[Derived Column Output4]"
+              endId="Package\STG\OLE DB Destination 2 1.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\STG\time_dimension 2 1.Outputs[Derived Column Output]" />
             <path
               refId="Package\STG.Paths[Lookup Match Output3]"
               endId="Package\STG\Conditional Split.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
               startId="Package\STG\Lookup.Outputs[Lookup Match Output]" />
             <path
+              refId="Package\STG.Paths[Lookup Match Output5]"
+              endId="Package\STG\Sort 2 1.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\STG\Lookup 4 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\STG.Paths[Lookup Match Output2]"
+              endId="Package\STG\Sort 2.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\STG\Lookup 4.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\STG.Paths[Lookup Match Output1]"
+              endId="Package\STG\Lookup 4.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\STG\Lookup 3.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\STG.Paths[Lookup Match Output]"
+              endId="Package\STG\Sort 1.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\STG\Lookup 2.Outputs[Lookup Match Output]" />
+            <path
               refId="Package\STG.Paths[Lookup Match Output4]"
               endId="Package\STG\Sort.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\STG\Lookup 1.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\STG.Paths[OLE DB Source Output1]"
-              endId="Package\STG\Aggregate 2.Inputs[Aggregate Input 1]"
+              refId="Package\STG.Paths[Merge Join Output]"
+              endId="Package\STG\Lookup 4 1.Inputs[Lookup Input]"
+              name="Merge Join Output"
+              startId="Package\STG\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\STG.Paths[OLE DB Source Output3]"
+              endId="Package\STG\Sort 4.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\STG\OLE DB Source 2.Outputs[OLE DB Source Output]" />
+              startId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\STG.Paths[OLE DB Source Output4]"
+              endId="Package\STG\Sort 3.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\STG.Paths[OLE DB Source Output2]"
               endId="Package\STG\Aggregate.Inputs[Aggregate Input 1]"
               name="OLE DB Source Output"
               startId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\STG.Paths[OLE DB Source Output1]"
+              endId="Package\STG\Aggregate 2.Inputs[Aggregate Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\STG\OLE DB Source 2.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\STG.Paths[OLE DB Source Output]"
               endId="Package\STG\Aggregate 1.Inputs[Aggregate Input 1]"
               name="OLE DB Source Output"
               startId="Package\STG\OLE DB Source 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\STG.Paths[Sort Output2]"
-              endId="Package\STG\Derived Column 1.Inputs[Derived Column Input]"
-              name="Sort Output"
-              startId="Package\STG\Sort.Outputs[Sort Output]" />
-            <path
               refId="Package\STG.Paths[Sort Output]"
               endId="Package\STG\time_dimension 2.Inputs[Derived Column Input]"
               name="Sort Output"
               startId="Package\STG\Sort 2.Outputs[Sort Output]" />
+            <path
+              refId="Package\STG.Paths[Sort Output3]"
+              endId="Package\STG\time_dimension 2 1.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\STG\Sort 2 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\STG.Paths[Sort Output4]"
+              endId="Package\STG\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\STG\Sort 3.Outputs[Sort Output]" />
+            <path
+              refId="Package\STG.Paths[Sort Output5]"
+              endId="Package\STG\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\STG\Sort 4.Outputs[Sort Output]" />
+            <path
+              refId="Package\STG.Paths[Sort Output2]"
+              endId="Package\STG\Derived Column 1.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\STG\Sort.Outputs[Sort Output]" />
             <path
               refId="Package\STG.Paths[Sort Output1]"
               endId="Package\STG\Derived Column.Inputs[Derived Column Input]"
@@ -7590,7 +9125,7 @@ where [refTable].[ProfessorID] = ?</property>
     design-time-name="Package\From Excel to Database">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="171.169811320755,41.6603773584906"
           Id="Package\From Excel to Database\OLE DB Destination"
@@ -7694,9 +9229,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7730,9 +9263,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7766,9 +9297,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7802,9 +9331,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7838,9 +9365,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7874,9 +9399,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7898,9 +9421,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7934,9 +9455,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7958,9 +9477,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7982,9 +9499,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8006,9 +9521,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8030,9 +9543,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8574,9 +10085,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,7.4198107247083,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8679,7 +10188,7 @@ where [refTable].[ProfessorID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-79.2750390625,5.22109280875381,158.550078125,16"
+              BoundingBox="-70.61390625,7.39199124625381,141.2278125,11.658203125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -8742,9 +10251,7 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,0.939404894569435,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8766,9 +10273,289 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164.830188679246,41.6603773584906"
+          Id="Package\STG\OLE DB Source 1 1"
+          TopLeft="1235.06355951724,179.999997317791" />
+        <NodeLayout
+          Size="155.773584905661,41.6603773584906"
+          Id="Package\STG\time_dimension 2 1"
+          TopLeft="1228.4444261392,709.678529442352" />
+        <NodeLayout
+          Size="174.792452830189,41.6603773584906"
+          Id="Package\STG\OLE DB Destination 2 1"
+          TopLeft="1227.5260970921,768.734558739992" />
+        <NodeLayout
+          Size="112.301886792453,41.6603773584906"
+          Id="Package\STG\Sort 2 1"
+          TopLeft="1254.60026990529,625.133956823078" />
+        <EdgeLayout
+          Id="Package\STG.Paths[Sort Output3]"
+          TopLeft="1308.54121594677,666.794334181569">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.8841952607835"
+              Start="0,0"
+              End="0,35.3841952607835">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.3841952607835" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Derived Column Output4]"
+          TopLeft="1228.4444261392,730.508718121597">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-0.918329047100315,59.0560292976397"
+              Start="0,0"
+              End="-8.41832904710031,59.0560292976397">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-19.4183290471003,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.4183290471003,0"
+                    Point2="-23.4183290471003,0"
+                    Point3="-23.4183290471003,4" />
+                  <mssgle:LineSegment
+                    End="-23.4183290471003,55.0560292976397" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.4183290471003,55.0560292976397"
+                    Point2="-23.4183290471003,59.0560292976397"
+                    Point3="-19.4183290471003,59.0560292976397" />
+                  <mssgle:LineSegment
+                    End="-8.41832904710031,59.0560292976397" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="104.150943396227,41.6603773584906"
+          Id="Package\STG\Sort 3"
+          TopLeft="1216.66664853692,368.867921895763" />
+        <NodeLayout
+          Size="164.830188679246,41.6603773584906"
+          Id="Package\STG\OLE DB Source 1 1 1"
+          TopLeft="1441.66664518416,107.817611438767" />
+        <NodeLayout
+          Size="104.150943396227,41.6603773584906"
+          Id="Package\STG\Sort 4"
+          TopLeft="1428.88886759679,293.333329757055" />
+        <EdgeLayout
+          Id="Package\STG.Paths[OLE DB Source Output3]"
+          TopLeft="1524.08173952378,149.477988797258">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-43.117400228884,143.855340959797"
+              Start="0,0"
+              End="-43.117400228884,136.355340959797">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.9276704798986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,67.9276704798986"
+                    Point2="0,71.9276704798986"
+                    Point3="-4,71.9276704798986" />
+                  <mssgle:LineSegment
+                    End="-39.117400228884,71.9276704798986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-39.117400228884,71.9276704798986"
+                    Point2="-43.117400228884,71.9276704798986"
+                    Point3="-43.117400228884,75.9276704798986" />
+                  <mssgle:LineSegment
+                    End="-43.117400228884,136.355340959797" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="118.641509433963,41.6603773584906"
+          Id="Package\STG\Lookup 4 1"
+          TopLeft="1323.04038432557,562.061607359674" />
+        <NodeLayout
+          Size="126.792452830189,41.6603773584906"
+          Id="Package\STG\Merge Join"
+          TopLeft="1314.4444248577,451.446536807519" />
+        <EdgeLayout
+          Id="Package\STG.Paths[Sort Output4]"
+          TopLeft="1268.74212023503,410.528299254254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.098531037756,40.9182375532653"
+              Start="0,0"
+              End="109.098531037756,33.4182375532653">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4591187766326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4591187766326"
+                    Point2="0,20.4591187766326"
+                    Point3="4,20.4591187766326" />
+                  <mssgle:LineSegment
+                    End="105.098531037756,20.4591187766326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.098531037756,20.4591187766326"
+                    Point2="109.098531037756,20.4591187766326"
+                    Point3="109.098531037756,24.4591187766326" />
+                  <mssgle:LineSegment
+                    End="109.098531037756,33.4182375532653" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Sort Output5]"
+          TopLeft="1480.9643392949,334.993707115545">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83.3249458837436,116.452829691974"
+              Start="0,0"
+              End="-83.3249458837436,108.952829691974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.0009712729308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65.0009712729308"
+                    Point2="0,69.0009712729308"
+                    Point3="-4,69.0009712729308" />
+                  <mssgle:LineSegment
+                    End="-79.3249458837436,69.0009712729308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.3249458837436,69.0009712729308"
+                    Point2="-83.3249458837436,69.0009712729308"
+                    Point3="-83.3249458837436,73.0009712729308" />
+                  <mssgle:LineSegment
+                    End="-83.3249458837436,108.952829691974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Merge Join Output]"
+          TopLeft="1380.10089515767,493.10691416601">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68.9546931936638"
+              Start="0,0"
+              End="0,61.4546931936638">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.4546931936638" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,11.3515965705644,16,16"
+              BoundingBox="-8,22.7273465968319,16,16"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Lookup Match Output5]"
+          TopLeft="1323.04038432557,582.891796038919">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.2891710240501,42.2421607841591"
+              Start="0,0"
+              End="-12.2891710240501,34.7421607841591">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-8.28917102405012,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.28917102405012,0"
+                    Point2="-12.2891710240501,0"
+                    Point3="-12.2891710240501,4" />
+                  <mssgle:LineSegment
+                    End="-12.2891710240501,34.7421607841591" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-69.3492100865501,-22,114.120078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[OLE DB Source Output4]"
+          TopLeft="1317.47865385686,221.660374676282">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-48.7365336218293,147.207547219482"
+              Start="0,0"
+              End="-48.7365336218293,139.707547219482">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.6037736097409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.6037736097409"
+                    Point2="0,73.6037736097409"
+                    Point3="-4,73.6037736097409" />
+                  <mssgle:LineSegment
+                    End="-44.7365336218293,73.6037736097409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44.7365336218293,73.6037736097409"
+                    Point2="-48.7365336218293,73.6037736097409"
+                    Point3="-48.7365336218293,77.6037736097409" />
+                  <mssgle:LineSegment
+                    End="-48.7365336218293,139.707547219482" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8829,7 +10616,7 @@ where [refTable].[ProfessorID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -8901,7 +10688,7 @@ where [refTable].[ProfessorID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -8911,7 +10698,7 @@ where [refTable].[ProfessorID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8990,6 +10777,68 @@ where [refTable].[ProfessorID] = ?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Source 1 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Destination 2 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Source 1 1 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Lookup 4 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Professor]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
