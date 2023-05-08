@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="147"
-  DTS:VersionGUID="{0DE4A91A-602C-413B-B486-E89052C7DA51}">
+  DTS:VersionBuild="176"
+  DTS:VersionGUID="{C476348F-CDF8-4EA5-B049-5151124BECBE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -137,6 +137,18 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7AC7C2AA-CE86-499D-B19E-0BADA74CFFD0}"
+      DTS:ObjectName="LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-RA45GHS0\SQLEXPRESS;Initial Catalog=Faculty_DWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{7AC7C2AA-CE86-499D-B19E-0BADA74CFFD0}LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{9A303E9D-2B76-4EB1-9D90-844B7086BAC4}"
@@ -173,12 +185,23 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DB5863DB-DFBF-405F-A5F4-177498A5D37C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="TopStu">
+      <DTS:VariableValue
+        DTS:DataType="2">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Delete all records"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{4DF0CAFB-99A5-41F2-9B08-AED69E5F226A}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -196,6 +219,7 @@
       DTS:refId="Package\Delete all records from STG"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
       DTS:DTSID="{F7D903D3-BCB2-4CDA-BB93-46B7F84CFC22}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -213,6 +237,7 @@
       DTS:refId="Package\DWH"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{acb29ed7-eb70-46b0-ab96-80ac2879cb13}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -1392,9 +1417,58 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9B66BB84-C9BD-4A75-97B3-4C4325C9AFF4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9EEED650-B736-4EF2-B13C-FCFE7E758E1F}"
+          SQLTask:SqlStatementSource=" SELECT top 1 StudentID&#xA; FROM DWH_Grade G1&#xA;WHERE EXISTS (&#xA;    SELECT StudentSemester, MAX(Grade)&#xA;    FROM DWH_Grade G2&#xA;    WHERE G1.StudentSemester = G2.StudentSemester  &#xA;    GROUP BY StudentSemester&#xA;    HAVING MAX(Grade) = G1.Grade&#xA;);"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::TopStu" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::TopStu"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{40D0D8A6-4E87-477C-AAEE-F1349BE2A190}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"insert into [Table_1] values ( ?)
+"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7AC7C2AA-CE86-499D-B19E-0BADA74CFFD0}"
+          SQLTask:SqlStatementSource="insert into [Table_1] values ( ?)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\From Excel to Database"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{DFBC32F2-C9E9-45DE-AE2D-872427BFAB6F}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -4002,6 +4076,7 @@
       DTS:refId="Package\STG"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{9C02016E-2A93-4CD1-849C-08D204F16A30}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -8696,20 +8771,20 @@ where [refTable].[ProfessorID] = ?</property>
               name="Derived Column Output"
               startId="Package\STG\time_dimension 2 1.Outputs[Derived Column Output]" />
             <path
-              refId="Package\STG.Paths[Lookup Match Output3]"
-              endId="Package\STG\Conditional Split.Inputs[Conditional Split Input]"
-              name="Lookup Match Output"
-              startId="Package\STG\Lookup.Outputs[Lookup Match Output]" />
-            <path
               refId="Package\STG.Paths[Lookup Match Output5]"
+              endId="Package\STG\Sort 2.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\STG\Lookup 4.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\STG.Paths[Lookup Match Output3]"
               endId="Package\STG\Sort 2 1.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\STG\Lookup 4 1.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\STG.Paths[Lookup Match Output2]"
-              endId="Package\STG\Sort 2.Inputs[Sort Input]"
+              refId="Package\STG.Paths[Lookup Match Output4]"
+              endId="Package\STG\Conditional Split.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
-              startId="Package\STG\Lookup 4.Outputs[Lookup Match Output]" />
+              startId="Package\STG\Lookup.Outputs[Lookup Match Output]" />
             <path
               refId="Package\STG.Paths[Lookup Match Output1]"
               endId="Package\STG\Lookup 4.Inputs[Lookup Input]"
@@ -8717,26 +8792,26 @@ where [refTable].[ProfessorID] = ?</property>
               startId="Package\STG\Lookup 3.Outputs[Lookup Match Output]" />
             <path
               refId="Package\STG.Paths[Lookup Match Output]"
-              endId="Package\STG\Sort 1.Inputs[Sort Input]"
-              name="Lookup Match Output"
-              startId="Package\STG\Lookup 2.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\STG.Paths[Lookup Match Output4]"
               endId="Package\STG\Sort.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\STG\Lookup 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\STG.Paths[Lookup Match Output2]"
+              endId="Package\STG\Sort 1.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\STG\Lookup 2.Outputs[Lookup Match Output]" />
             <path
               refId="Package\STG.Paths[Merge Join Output]"
               endId="Package\STG\Lookup 4 1.Inputs[Lookup Input]"
               name="Merge Join Output"
               startId="Package\STG\Merge Join.Outputs[Merge Join Output]" />
             <path
-              refId="Package\STG.Paths[OLE DB Source Output3]"
+              refId="Package\STG.Paths[OLE DB Source Output]"
               endId="Package\STG\Sort 4.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\STG\OLE DB Source 1 1 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\STG.Paths[OLE DB Source Output4]"
+              refId="Package\STG.Paths[OLE DB Source Output1]"
               endId="Package\STG\Sort 3.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\STG\OLE DB Source 1 1.Outputs[OLE DB Source Output]" />
@@ -8746,42 +8821,42 @@ where [refTable].[ProfessorID] = ?</property>
               name="OLE DB Source Output"
               startId="Package\STG\OLE DB Source.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\STG.Paths[OLE DB Source Output1]"
+              refId="Package\STG.Paths[OLE DB Source Output3]"
               endId="Package\STG\Aggregate 2.Inputs[Aggregate Input 1]"
               name="OLE DB Source Output"
               startId="Package\STG\OLE DB Source 2.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\STG.Paths[OLE DB Source Output]"
+              refId="Package\STG.Paths[OLE DB Source Output4]"
               endId="Package\STG\Aggregate 1.Inputs[Aggregate Input 1]"
               name="OLE DB Source Output"
               startId="Package\STG\OLE DB Source 1.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\STG.Paths[Sort Output]"
-              endId="Package\STG\time_dimension 2.Inputs[Derived Column Input]"
-              name="Sort Output"
-              startId="Package\STG\Sort 2.Outputs[Sort Output]" />
-            <path
-              refId="Package\STG.Paths[Sort Output3]"
-              endId="Package\STG\time_dimension 2 1.Inputs[Derived Column Input]"
-              name="Sort Output"
-              startId="Package\STG\Sort 2 1.Outputs[Sort Output]" />
-            <path
               refId="Package\STG.Paths[Sort Output4]"
-              endId="Package\STG\Merge Join.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\STG\Sort 3.Outputs[Sort Output]" />
-            <path
-              refId="Package\STG.Paths[Sort Output5]"
               endId="Package\STG\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\STG\Sort 4.Outputs[Sort Output]" />
             <path
-              refId="Package\STG.Paths[Sort Output2]"
+              refId="Package\STG.Paths[Sort Output]"
               endId="Package\STG\Derived Column 1.Inputs[Derived Column Input]"
               name="Sort Output"
               startId="Package\STG\Sort.Outputs[Sort Output]" />
             <path
               refId="Package\STG.Paths[Sort Output1]"
+              endId="Package\STG\time_dimension 2.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\STG\Sort 2.Outputs[Sort Output]" />
+            <path
+              refId="Package\STG.Paths[Sort Output2]"
+              endId="Package\STG\time_dimension 2 1.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\STG\Sort 2 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\STG.Paths[Sort Output3]"
+              endId="Package\STG\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\STG\Sort 3.Outputs[Sort Output]" />
+            <path
+              refId="Package\STG.Paths[Sort Output5]"
               endId="Package\STG\Derived Column.Inputs[Derived Column Input]"
               name="Sort Output"
               startId="Package\STG\Sort 1.Outputs[Sort Output]" />
@@ -8815,6 +8890,22 @@ where [refTable].[ProfessorID] = ?</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{DB20DF2F-BCC6-436E-B45D-2DC3490CD968}"
+      DTS:From="Package\DWH"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Execute SQL Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{AE36A08F-AFA6-4C94-A41E-CFE485AF9B63}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Execute SQL Task 1" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
@@ -8944,6 +9035,58 @@ where [refTable].[ProfessorID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="160.301886792453,41.6603773584906"
+          Id="Package\Execute SQL Task"
+          TopLeft="309.99999538064,476.999992892146" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="387.036516176932,424.700240465534">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.2997524266125"
+              Start="0,0"
+              End="0,44.7997524266125">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.7997524266125" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="168.45283018868,41.6603773584906"
+          Id="Package\Execute SQL Task 1"
+          TopLeft="302.999995484948,624.320746655453" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="388.688674678077,518.660370250637">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,105.660376404816"
+              Start="0,0"
+              End="0,98.1603764048161">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,98.1603764048161" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -8953,6 +9096,10 @@ where [refTable].[ProfessorID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="174.792452830189,41.6603773584906"
+          Id="Package\DWH\OLE DB Destination 1"
+          TopLeft="789.999988228083,153.999997705221" />
+        <NodeLayout
           Size="144.905660377359,41.6603773584906"
           Id="Package\DWH\STG_Prof_rate"
           TopLeft="517.999992281199,29.9999995529652" />
@@ -8961,47 +9108,17 @@ where [refTable].[ProfessorID] = ?</property>
           Id="Package\DWH\OLE DB Destination 2"
           TopLeft="497.999992579222,173.999997407198" />
         <NodeLayout
-          Size="166.641509433963,41.6603773584906"
-          Id="Package\DWH\OLE DB Destination"
-          TopLeft="21.9999996721745,174.999997392297" />
+          Size="148.528301886793,41.6603773584906"
+          Id="Package\DWH\OLE DB Source"
+          TopLeft="779.999988377094,30.999999538064" />
         <NodeLayout
           Size="131.320754716982,41.6603773584906"
           Id="Package\DWH\STG_Grade"
           TopLeft="24.999999627471,21.9999996721743" />
-        <EdgeLayout
-          Id="Package\DWH.Paths[OLE DB Source Output1]"
-          TopLeft="90.6603769859615,63.6603770306649">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="14.660377403194,111.339620361632"
-              Start="0,0"
-              End="14.660377403194,103.839620361632">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.669810180816" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,51.669810180816"
-                    Point2="0,55.669810180816"
-                    Point3="4,55.669810180816" />
-                  <mssgle:LineSegment
-                    End="10.660377403194,55.669810180816" />
-                  <mssgle:CubicBezierSegment
-                    Point1="10.660377403194,55.669810180816"
-                    Point2="14.660377403194,55.669810180816"
-                    Point3="14.660377403194,59.669810180816" />
-                  <mssgle:LineSegment
-                    End="14.660377403194,103.839620361632" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="166.641509433963,41.6603773584906"
+          Id="Package\DWH\OLE DB Destination"
+          TopLeft="21.9999996721745,174.999997392297" />
         <EdgeLayout
           Id="Package\DWH.Paths[OLE DB Source Output]"
           TopLeft="587.924520732097,71.6603769114558">
@@ -9024,14 +9141,6 @@ where [refTable].[ProfessorID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="148.528301886793,41.6603773584906"
-          Id="Package\DWH\OLE DB Source"
-          TopLeft="779.999988377094,30.999999538064" />
-        <NodeLayout
-          Size="174.792452830189,41.6603773584906"
-          Id="Package\DWH\OLE DB Destination 1"
-          TopLeft="789.999988228083,153.999997705221" />
         <EdgeLayout
           Id="Package\DWH.Paths[OLE DB Source Output2]"
           TopLeft="854.26413932049,72.6603768965546">
@@ -9066,9 +9175,56 @@ where [refTable].[ProfessorID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DWH.Paths[OLE DB Source Output1]"
+          TopLeft="90.6603769859615,63.6603770306649">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.660377403194,111.339620361632"
+              Start="0,0"
+              End="14.660377403194,103.839620361632">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.669810180816" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.669810180816"
+                    Point2="0,55.669810180816"
+                    Point3="4,55.669810180816" />
+                  <mssgle:LineSegment
+                    End="10.660377403194,55.669810180816" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.660377403194,55.669810180816"
+                    Point2="14.660377403194,55.669810180816"
+                    Point3="14.660377403194,59.669810180816" />
+                  <mssgle:LineSegment
+                    End="14.660377403194,103.839620361632" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DWH\STG_Prof_rate">
     <Properties>
@@ -9096,7 +9252,7 @@ where [refTable].[ProfessorID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DWH\OLE DB Destination">
+    design-time-name="Package\DWH\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9121,11 +9277,24 @@ where [refTable].[ProfessorID] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\From Excel to Database">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171.169811320755,41.6603773584906"
           Id="Package\From Excel to Database\OLE DB Destination"
@@ -9229,7 +9398,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9263,7 +9434,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9297,7 +9470,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9331,7 +9506,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9365,7 +9542,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9399,7 +9578,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9421,7 +9602,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9455,7 +9638,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9477,7 +9662,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9499,7 +9686,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9521,7 +9710,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9543,7 +9734,9 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -9711,91 +9904,131 @@ where [refTable].[ProfessorID] = ?</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="156.679245283019,41.6603773584906"
-          Id="Package\STG\OLE DB Source 1"
-          TopLeft="676.336295115652,22.5824172459133" />
+          Size="155.773584905661,41.6603773584906"
+          Id="Package\STG\time_dimension 2 1"
+          TopLeft="1228.4444261392,709.678529442352" />
+        <NodeLayout
+          Size="126.792452830189,41.6603773584906"
+          Id="Package\STG\Merge Join"
+          TopLeft="1314.4444248577,451.446536807519" />
         <NodeLayout
           Size="96,41.6603773584906"
           Id="Package\STG\Sort"
           TopLeft="1058.61536884079,467.790996733442" />
         <NodeLayout
-          Size="118.641509433963,41.6603773584906"
-          Id="Package\STG\Lookup 2"
-          TopLeft="296.999995574355,215.999996781349" />
-        <NodeLayout
-          Size="150.33962264151,41.6603773584906"
-          Id="Package\STG\Conditional Split"
-          TopLeft="1014.60859662381,301.730764734631" />
-        <NodeLayout
-          Size="155.773584905661,41.6603773584906"
-          Id="Package\STG\time_dimension 2"
-          TopLeft="665.27271735939,513.372061061076" />
-        <NodeLayout
-          Size="174.792452830189,41.6603773584906"
-          Id="Package\STG\OLE DB Destination 1"
-          TopLeft="265.818177857182,594.672721248595" />
-        <NodeLayout
-          Size="132.22641509434,41.6603773584906"
-          Id="Package\STG\Aggregate 1"
-          TopLeft="685.292338938241,126.593404707018" />
-        <NodeLayout
-          Size="118.641509433963,41.6603773584906"
-          Id="Package\STG\Lookup 3"
-          TopLeft="685.347283992367,212.91208473945" />
-        <NodeLayout
-          Size="156.679245283019,41.6603773584906"
-          Id="Package\STG\OLE DB Source 2"
-          TopLeft="289.999995678663,13.0000000447035" />
-        <NodeLayout
-          Size="105.962264150944,41.6603773584906"
-          Id="Package\STG\Sort 1"
-          TopLeft="300.99999551475,332.599995782971" />
+          Size="149.433962264151,41.6603773584906"
+          Id="Package\STG\Derived Column"
+          TopLeft="279.999995827675,425.018862589913" />
         <NodeLayout
           Size="174.792452830189,41.6603773584906"
           Id="Package\STG\OLE DB Destination 2"
           TopLeft="668.798832690507,611.316978668114" />
         <NodeLayout
-          Size="110.490566037736,41.6603773584906"
-          Id="Package\STG\Lookup"
-          TopLeft="1020.83331812173,206.666663587093" />
-        <NodeLayout
-          Size="104.150943396227,41.6603773584906"
-          Id="Package\STG\Sort 2"
-          TopLeft="691.428561125483,428.827488441801" />
-        <NodeLayout
-          Size="118.641509433963,41.6603773584906"
-          Id="Package\STG\Lookup 4"
-          TopLeft="692.142846829124,318.376618632442" />
-        <NodeLayout
-          Size="148.528301886793,41.6603773584906"
-          Id="Package\STG\OLE DB Source"
-          TopLeft="1028.33331800997,36.6666661202908" />
-        <NodeLayout
-          Size="134.943396226416,41.6603773584906"
-          Id="Package\STG\Aggregate 2"
-          TopLeft="294.999995604157,92.999998614192" />
+          Size="112.301886792453,41.6603773584906"
+          Id="Package\STG\Sort 2 1"
+          TopLeft="1254.60026990529,625.133956823078" />
         <NodeLayout
           Size="118.641509433963,41.6603773584906"
           Id="Package\STG\Lookup 1"
           TopLeft="1037.83331786841,377.333327710629" />
         <NodeLayout
-          Size="149.433962264151,41.6603773584906"
-          Id="Package\STG\Derived Column"
-          TopLeft="279.999995827675,425.018862589913" />
+          Size="156.679245283019,41.6603773584906"
+          Id="Package\STG\OLE DB Source 2"
+          TopLeft="289.999995678663,13.0000000447035" />
+        <NodeLayout
+          Size="156.679245283019,41.6603773584906"
+          Id="Package\STG\OLE DB Source 1"
+          TopLeft="676.336295115652,22.5824172459133" />
+        <NodeLayout
+          Size="150.33962264151,41.6603773584906"
+          Id="Package\STG\Conditional Split"
+          TopLeft="1014.60859662381,301.730764734631" />
+        <NodeLayout
+          Size="118.641509433963,41.6603773584906"
+          Id="Package\STG\Lookup 2"
+          TopLeft="296.999995574355,215.999996781349" />
         <NodeLayout
           Size="147.622641509434,41.6603773584906"
           Id="Package\STG\time_dimension"
           TopLeft="281.818177618764,514.716975388355" />
         <NodeLayout
-          Size="124.075471698114,41.6603773584906"
-          Id="Package\STG\Aggregate"
-          TopLeft="1009.99998494983,126.666664779186" />
+          Size="118.641509433963,41.6603773584906"
+          Id="Package\STG\Lookup 4 1"
+          TopLeft="1323.04038432557,562.061607359674" />
+        <NodeLayout
+          Size="148.528301886793,41.6603773584906"
+          Id="Package\STG\OLE DB Source"
+          TopLeft="1028.33331800997,36.6666661202908" />
+        <NodeLayout
+          Size="104.150943396227,41.6603773584906"
+          Id="Package\STG\Sort 3"
+          TopLeft="1216.66664853692,368.867921895763" />
+        <NodeLayout
+          Size="174.792452830189,41.6603773584906"
+          Id="Package\STG\OLE DB Destination 1"
+          TopLeft="265.818177857182,594.672721248595" />
+        <NodeLayout
+          Size="104.150943396227,41.6603773584906"
+          Id="Package\STG\Sort 2"
+          TopLeft="691.428561125483,428.827488441801" />
+        <NodeLayout
+          Size="134.943396226416,41.6603773584906"
+          Id="Package\STG\Aggregate 2"
+          TopLeft="294.999995604157,92.999998614192" />
+        <NodeLayout
+          Size="155.773584905661,41.6603773584906"
+          Id="Package\STG\time_dimension 2"
+          TopLeft="665.27271735939,513.372061061076" />
+        <NodeLayout
+          Size="157.584905660378,41.6603773584906"
+          Id="Package\STG\Derived Column 1"
+          TopLeft="1025.99998471141,534.830183881071" />
+        <NodeLayout
+          Size="104.150943396227,41.6603773584906"
+          Id="Package\STG\Sort 4"
+          TopLeft="1428.88886759679,293.333329757055" />
+        <NodeLayout
+          Size="118.641509433963,41.6603773584906"
+          Id="Package\STG\Lookup 4"
+          TopLeft="692.142846829124,318.376618632442" />
+        <NodeLayout
+          Size="164.830188679246,41.6603773584906"
+          Id="Package\STG\OLE DB Source 1 1 1"
+          TopLeft="1441.66664518416,107.817611438767" />
+        <NodeLayout
+          Size="132.22641509434,41.6603773584906"
+          Id="Package\STG\Aggregate 1"
+          TopLeft="685.292338938241,126.593404707018" />
+        <NodeLayout
+          Size="105.962264150944,41.6603773584906"
+          Id="Package\STG\Sort 1"
+          TopLeft="300.99999551475,332.599995782971" />
         <NodeLayout
           Size="166.641509433963,41.6603773584906"
           Id="Package\STG\OLE DB Destination"
           TopLeft="1026.13931740727,622.693754380691" />
+        <NodeLayout
+          Size="174.792452830189,41.6603773584906"
+          Id="Package\STG\OLE DB Destination 2 1"
+          TopLeft="1227.5260970921,768.734558739992" />
+        <NodeLayout
+          Size="110.490566037736,41.6603773584906"
+          Id="Package\STG\Lookup"
+          TopLeft="1020.83331812173,206.666663587093" />
+        <NodeLayout
+          Size="164.830188679246,41.6603773584906"
+          Id="Package\STG\OLE DB Source 1 1"
+          TopLeft="1235.06355951724,179.999997317791" />
+        <NodeLayout
+          Size="118.641509433963,41.6603773584906"
+          Id="Package\STG\Lookup 3"
+          TopLeft="685.347283992367,212.91208473945" />
+        <NodeLayout
+          Size="124.075471698114,41.6603773584906"
+          Id="Package\STG\Aggregate"
+          TopLeft="1009.99998494983,126.666664779186" />
         <EdgeLayout
-          Id="Package\STG.Paths[Sort Output1]"
+          Id="Package\STG.Paths[Sort Output5]"
           TopLeft="354.349052274986,374.260373141462">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -9813,11 +10046,109 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Sort Output]"
+          Id="Package\STG.Paths[Sort Output4]"
+          TopLeft="1480.9643392949,334.993707115545">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-83.3249458837436,116.452829691974"
+              Start="0,0"
+              End="-83.3249458837436,108.952829691974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.0009712729308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65.0009712729308"
+                    Point2="0,69.0009712729308"
+                    Point3="-4,69.0009712729308" />
+                  <mssgle:LineSegment
+                    End="-79.3249458837436,69.0009712729308" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-79.3249458837436,69.0009712729308"
+                    Point2="-83.3249458837436,69.0009712729308"
+                    Point3="-83.3249458837436,73.0009712729308" />
+                  <mssgle:LineSegment
+                    End="-83.3249458837436,108.952829691974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Sort Output3]"
+          TopLeft="1268.74212023503,410.528299254254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.098531037756,40.9182375532653"
+              Start="0,0"
+              End="109.098531037756,33.4182375532653">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4591187766326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4591187766326"
+                    Point2="0,20.4591187766326"
+                    Point3="4,20.4591187766326" />
+                  <mssgle:LineSegment
+                    End="105.098531037756,20.4591187766326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.098531037756,20.4591187766326"
+                    Point2="109.098531037756,20.4591187766326"
+                    Point3="109.098531037756,24.4591187766326" />
+                  <mssgle:LineSegment
+                    End="109.098531037756,33.4182375532653" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Sort Output2]"
+          TopLeft="1308.54121594677,666.794334181569">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.8841952607835"
+              Start="0,0"
+              End="0,35.3841952607835">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.3841952607835" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Sort Output1]"
           TopLeft="743.331771317908,470.487865800292">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -9835,7 +10166,81 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Sort Output]"
+          TopLeft="1105.70390319119,509.451374091933">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.3788097891389"
+              Start="0,0"
+              End="0,17.8788097891389">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.8788097891389" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[OLE DB Source Output4]"
+          TopLeft="753.040732121286,64.2427946044038">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.3506101026139"
+              Start="0,0"
+              End="0,54.8506101026139">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.8506101026139" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[OLE DB Source Output3]"
+          TopLeft="365.405656018768,54.6603774031941">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.3396212109979"
+              Start="0,0"
+              End="0,30.8396212109979">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8396212109979" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9869,55 +10274,109 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[OLE DB Source Output1]"
-          TopLeft="365.405656018768,54.6603774031941">
+          TopLeft="1317.47865385686,221.660374676282">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38.3396212109979"
+              EndConnector="-48.7365336218293,147.207547219482"
               Start="0,0"
-              End="0,30.8396212109979">
+              End="-48.7365336218293,139.707547219482">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.8396212109979" />
+                    End="0,69.6037736097409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.6037736097409"
+                    Point2="0,73.6037736097409"
+                    Point3="-4,73.6037736097409" />
+                  <mssgle:LineSegment
+                    End="-44.7365336218293,73.6037736097409" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44.7365336218293,73.6037736097409"
+                    Point2="-48.7365336218293,73.6037736097409"
+                    Point3="-48.7365336218293,77.6037736097409" />
+                  <mssgle:LineSegment
+                    End="-48.7365336218293,139.707547219482" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[OLE DB Source Output]"
-          TopLeft="753.040732121286,64.2427946044038">
+          TopLeft="1524.08173952378,149.477988797258">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62.3506101026139"
+              EndConnector="-43.117400228884,143.855340959797"
               Start="0,0"
-              End="0,54.8506101026139">
+              End="-43.117400228884,136.355340959797">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,54.8506101026139" />
+                    End="0,67.9276704798986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,67.9276704798986"
+                    Point2="0,71.9276704798986"
+                    Point3="-4,71.9276704798986" />
+                  <mssgle:LineSegment
+                    End="-39.117400228884,71.9276704798986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-39.117400228884,71.9276704798986"
+                    Point2="-43.117400228884,71.9276704798986"
+                    Point3="-43.117400228884,75.9276704798986" />
+                  <mssgle:LineSegment
+                    End="-43.117400228884,136.355340959797" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output2]"
+          Id="Package\STG.Paths[Merge Join Output]"
+          TopLeft="1380.10089515767,493.10691416601">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68.9546931936638"
+              Start="0,0"
+              End="0,61.4546931936638">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.4546931936638" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,22.7273465968319,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Lookup Match Output5]"
           TopLeft="747.483817184851,360.036995990932">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -9941,199 +10400,7 @@ where [refTable].[ProfessorID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output1]"
-          TopLeft="748.065820127727,254.572462097941">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,63.8041565345009"
-              Start="0,0"
-              End="0,56.3041565345009">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,56.3041565345009" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,22.3473907672504,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output]"
-          TopLeft="355.150938940779,257.66037413984">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,74.9396216431314"
-              Start="0,0"
-              End="0,67.4396216431314">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,67.4396216431314" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,27.9151233215657,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Derived Column Output2]"
-          TopLeft="743.15950981222,555.032438419566">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="13.0355492933811,56.2845402485476"
-              Start="0,0"
-              End="13.0355492933811,48.7845402485476">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.1422701242738" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.1422701242738"
-                    Point2="0,28.1422701242738"
-                    Point3="4,28.1422701242738" />
-                  <mssgle:LineSegment
-                    End="9.03554929338111,28.1422701242738" />
-                  <mssgle:CubicBezierSegment
-                    Point1="9.03554929338111,28.1422701242738"
-                    Point2="13.0355492933811,28.1422701242738"
-                    Point3="13.0355492933811,32.1422701242738" />
-                  <mssgle:LineSegment
-                    End="13.0355492933811,48.7845402485476" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Derived Column Output1]"
-          TopLeft="354.421951322878,556.377352746846">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.2953685017491"
-              Start="0,0"
-              End="0,30.7953685017491">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.7953685017491" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Derived Column Output]"
-          TopLeft="355.173237666616,466.679239948403">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.0377354399517"
-              Start="0,0"
-              End="0,40.5377354399517">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,40.5377354399517" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Aggregate Output 12]"
-          TopLeft="1074.05816096974,168.327042137677">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.3396214494166"
-              Start="0,0"
-              End="0,30.8396214494166">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.8396214494166" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Aggregate Output 11]"
-          TopLeft="748.036792597379,168.253782065508">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,44.6583026739419"
-              Start="0,0"
-              End="0,37.1583026739419">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37.1583026739419" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Aggregate Output 1]"
-          TopLeft="359.39622200435,134.660375972683">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,81.3396208086664"
-              Start="0,0"
-              End="0,73.8396208086664">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.8396208086664" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output3]"
+          Id="Package\STG.Paths[Lookup Match Output4]"
           TopLeft="1076.0786011406,248.327040945584">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10169,31 +10436,85 @@ where [refTable].[ProfessorID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Conditional Split Default Output]"
-          TopLeft="1093.46624026498,343.391142093121">
+          Id="Package\STG.Paths[Lookup Match Output3]"
+          TopLeft="1323.04038432557,582.891796038919">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,33.9421856175076"
+              EndConnector="-12.2891710240501,42.2421607841591"
               Start="0,0"
-              End="0,26.4421856175076">
+              End="-12.2891710240501,34.7421607841591">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.4421856175076" />
+                    End="-8.28917102405012,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.28917102405012,0"
+                    Point2="-12.2891710240501,0"
+                    Point3="-12.2891710240501,4" />
+                  <mssgle:LineSegment
+                    End="-12.2891710240501,34.7421607841591" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-70.61390625,7.39199124625381,141.2278125,11.658203125"
+              BoundingBox="-69.3492100865501,-22,114.120078125,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output4]"
+          Id="Package\STG.Paths[Lookup Match Output2]"
+          TopLeft="355.150938940779,257.66037413984">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.9396216431314"
+              Start="0,0"
+              End="0,67.4396216431314">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.4396216431314" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,27.9151233215657,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Lookup Match Output1]"
+          TopLeft="748.065820127727,254.572462097941">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.8041565345009"
+              Start="0,0"
+              End="0,56.3041565345009">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.3041565345009" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,22.3473907672504,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Lookup Match Output]"
           TopLeft="1097.1540725854,418.993705069119">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10228,92 +10549,6 @@ where [refTable].[ProfessorID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="157.584905660378,41.6603773584906"
-          Id="Package\STG\Derived Column 1"
-          TopLeft="1025.99998471141,534.830183881071" />
-        <EdgeLayout
-          Id="Package\STG.Paths[Sort Output2]"
-          TopLeft="1105.70390319119,509.451374091933">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,25.3788097891389"
-              Start="0,0"
-              End="0,17.8788097891389">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.8788097891389" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Derived Column Output3]"
-          TopLeft="1107.12625483292,576.490561239562">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,46.2031931411287"
-              Start="0,0"
-              End="0,38.7031931411287">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.7031931411287" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="164.830188679246,41.6603773584906"
-          Id="Package\STG\OLE DB Source 1 1"
-          TopLeft="1235.06355951724,179.999997317791" />
-        <NodeLayout
-          Size="155.773584905661,41.6603773584906"
-          Id="Package\STG\time_dimension 2 1"
-          TopLeft="1228.4444261392,709.678529442352" />
-        <NodeLayout
-          Size="174.792452830189,41.6603773584906"
-          Id="Package\STG\OLE DB Destination 2 1"
-          TopLeft="1227.5260970921,768.734558739992" />
-        <NodeLayout
-          Size="112.301886792453,41.6603773584906"
-          Id="Package\STG\Sort 2 1"
-          TopLeft="1254.60026990529,625.133956823078" />
-        <EdgeLayout
-          Id="Package\STG.Paths[Sort Output3]"
-          TopLeft="1308.54121594677,666.794334181569">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42.8841952607835"
-              Start="0,0"
-              End="0,35.3841952607835">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.3841952607835" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Derived Column Output4]"
           TopLeft="1228.4444261392,730.508718121597">
@@ -10345,222 +10580,267 @@ where [refTable].[ProfessorID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="104.150943396227,41.6603773584906"
-          Id="Package\STG\Sort 3"
-          TopLeft="1216.66664853692,368.867921895763" />
-        <NodeLayout
-          Size="164.830188679246,41.6603773584906"
-          Id="Package\STG\OLE DB Source 1 1 1"
-          TopLeft="1441.66664518416,107.817611438767" />
-        <NodeLayout
-          Size="104.150943396227,41.6603773584906"
-          Id="Package\STG\Sort 4"
-          TopLeft="1428.88886759679,293.333329757055" />
         <EdgeLayout
-          Id="Package\STG.Paths[OLE DB Source Output3]"
-          TopLeft="1524.08173952378,149.477988797258">
+          Id="Package\STG.Paths[Derived Column Output3]"
+          TopLeft="1107.12625483292,576.490561239562">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-43.117400228884,143.855340959797"
+              EndConnector="0,46.2031931411287"
               Start="0,0"
-              End="-43.117400228884,136.355340959797">
+              End="0,38.7031931411287">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,67.9276704798986" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,67.9276704798986"
-                    Point2="0,71.9276704798986"
-                    Point3="-4,71.9276704798986" />
-                  <mssgle:LineSegment
-                    End="-39.117400228884,71.9276704798986" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-39.117400228884,71.9276704798986"
-                    Point2="-43.117400228884,71.9276704798986"
-                    Point3="-43.117400228884,75.9276704798986" />
-                  <mssgle:LineSegment
-                    End="-43.117400228884,136.355340959797" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="118.641509433963,41.6603773584906"
-          Id="Package\STG\Lookup 4 1"
-          TopLeft="1323.04038432557,562.061607359674" />
-        <NodeLayout
-          Size="126.792452830189,41.6603773584906"
-          Id="Package\STG\Merge Join"
-          TopLeft="1314.4444248577,451.446536807519" />
-        <EdgeLayout
-          Id="Package\STG.Paths[Sort Output4]"
-          TopLeft="1268.74212023503,410.528299254254">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="109.098531037756,40.9182375532653"
-              Start="0,0"
-              End="109.098531037756,33.4182375532653">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.4591187766326" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.4591187766326"
-                    Point2="0,20.4591187766326"
-                    Point3="4,20.4591187766326" />
-                  <mssgle:LineSegment
-                    End="105.098531037756,20.4591187766326" />
-                  <mssgle:CubicBezierSegment
-                    Point1="105.098531037756,20.4591187766326"
-                    Point2="109.098531037756,20.4591187766326"
-                    Point3="109.098531037756,24.4591187766326" />
-                  <mssgle:LineSegment
-                    End="109.098531037756,33.4182375532653" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Sort Output5]"
-          TopLeft="1480.9643392949,334.993707115545">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-83.3249458837436,116.452829691974"
-              Start="0,0"
-              End="-83.3249458837436,108.952829691974">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65.0009712729308" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,65.0009712729308"
-                    Point2="0,69.0009712729308"
-                    Point3="-4,69.0009712729308" />
-                  <mssgle:LineSegment
-                    End="-79.3249458837436,69.0009712729308" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-79.3249458837436,69.0009712729308"
-                    Point2="-83.3249458837436,69.0009712729308"
-                    Point3="-83.3249458837436,73.0009712729308" />
-                  <mssgle:LineSegment
-                    End="-83.3249458837436,108.952829691974" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Merge Join Output]"
-          TopLeft="1380.10089515767,493.10691416601">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,68.9546931936638"
-              Start="0,0"
-              End="0,61.4546931936638">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.4546931936638" />
+                    End="0,38.7031931411287" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,22.7273465968319,16,16"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output5]"
-          TopLeft="1323.04038432557,582.891796038919">
+          Id="Package\STG.Paths[Derived Column Output2]"
+          TopLeft="743.15950981222,555.032438419566">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-12.2891710240501,42.2421607841591"
+              EndConnector="13.0355492933811,56.2845402485476"
               Start="0,0"
-              End="-12.2891710240501,34.7421607841591">
+              End="13.0355492933811,48.7845402485476">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-8.28917102405012,0" />
+                    End="0,24.1422701242738" />
                   <mssgle:CubicBezierSegment
-                    Point1="-8.28917102405012,0"
-                    Point2="-12.2891710240501,0"
-                    Point3="-12.2891710240501,4" />
+                    Point1="0,24.1422701242738"
+                    Point2="0,28.1422701242738"
+                    Point3="4,28.1422701242738" />
                   <mssgle:LineSegment
-                    End="-12.2891710240501,34.7421607841591" />
+                    End="9.03554929338111,28.1422701242738" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.03554929338111,28.1422701242738"
+                    Point2="13.0355492933811,28.1422701242738"
+                    Point3="13.0355492933811,32.1422701242738" />
+                  <mssgle:LineSegment
+                    End="13.0355492933811,48.7845402485476" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-69.3492100865501,-22,114.120078125,16"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[OLE DB Source Output4]"
-          TopLeft="1317.47865385686,221.660374676282">
+          Id="Package\STG.Paths[Derived Column Output1]"
+          TopLeft="354.421951322878,556.377352746846">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-48.7365336218293,147.207547219482"
+              EndConnector="0,38.2953685017491"
               Start="0,0"
-              End="-48.7365336218293,139.707547219482">
+              End="0,30.7953685017491">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.6037736097409" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,69.6037736097409"
-                    Point2="0,73.6037736097409"
-                    Point3="-4,73.6037736097409" />
-                  <mssgle:LineSegment
-                    End="-44.7365336218293,73.6037736097409" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-44.7365336218293,73.6037736097409"
-                    Point2="-48.7365336218293,73.6037736097409"
-                    Point3="-48.7365336218293,77.6037736097409" />
-                  <mssgle:LineSegment
-                    End="-48.7365336218293,139.707547219482" />
+                    End="0,30.7953685017491" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Derived Column Output]"
+          TopLeft="355.173237666616,466.679239948403">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.0377354399517"
+              Start="0,0"
+              End="0,40.5377354399517">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5377354399517" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Conditional Split Default Output]"
+          TopLeft="1093.46624026498,343.391142093121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.9421856175076"
+              Start="0,0"
+              End="0,26.4421856175076">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.4421856175076" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-70.61390625,7.39199124625381,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Aggregate Output 12]"
+          TopLeft="1074.05816096974,168.327042137677">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.3396214494166"
+              Start="0,0"
+              End="0,30.8396214494166">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8396214494166" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Aggregate Output 11]"
+          TopLeft="748.036792597379,168.253782065508">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.6583026739419"
+              Start="0,0"
+              End="0,37.1583026739419">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.1583026739419" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Aggregate Output 1]"
+          TopLeft="359.39622200435,134.660375972683">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81.3396208086664"
+              Start="0,0"
+              End="0,73.8396208086664">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.8396208086664" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Destination 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Department]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Source 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\STG\OLE DB Source 1">
     <Properties>
@@ -10598,97 +10878,12 @@ where [refTable].[ProfessorID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\STG\OLE DB Destination 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup 3">
+    design-time-name="Package\STG\Lookup 4 1">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Course]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\OLE DB Source 2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\OLE DB Destination 2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Student]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup 4">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -10698,7 +10893,7 @@ where [refTable].[ProfessorID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10719,69 +10914,56 @@ where [refTable].[ProfessorID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup 1">
+    design-time-name="Package\STG\OLE DB Destination 1">
     <Properties>
       <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Department]</Value>
+        <Name>DataSourceViewID</Name>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Lookup 4">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Professor]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Source 1 1 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\STG\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DWH\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DWH\OLE DB Destination 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\OLE DB Source 1 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10807,7 +10989,30 @@ where [refTable].[ProfessorID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\STG\OLE DB Source 1 1 1">
+    design-time-name="Package\STG\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Student]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Source 1 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10820,22 +11025,22 @@ where [refTable].[ProfessorID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup 4 1">
+    design-time-name="Package\STG\Lookup 3">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[Professor]</Value>
+          type="q3:string">[dbo].[Course]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
