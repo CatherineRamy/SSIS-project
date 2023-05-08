@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="MISHOO.Faculty_STG"
+  DTS:DTSID="{F90069D3-8C36-46B4-A371-11ACA98D2E95}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=MISHOO;Initial Catalog=Faculty_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Integration Services Faculty Project-{F90069D3-8C36-46B4-A371-11ACA98D2E95}MISHOO.Faculty_STG;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
