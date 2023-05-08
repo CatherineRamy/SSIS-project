@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="179"
-  DTS:VersionGUID="{44ABC51B-6FB7-4561-84D4-D8DC70E764FF}">
+  DTS:VersionBuild="180"
+  DTS:VersionGUID="{63F2F38A-5B26-4225-A962-5D09B8068583}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -246,11 +246,11 @@
           version="1">
           <components>
             <component
-              refId="Package\DWH\OLE DB Destination"
+              refId="Package\DWH\DWH_Grade"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="DWH_Grade"
               usesDispositions="true"
               version="4">
               <properties>
@@ -303,7 +303,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DWH\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\DWH\DWH_Grade.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH]"
                   connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH]"
                   description="The OLE DB runtime connection used to access the database."
@@ -311,77 +311,77 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StudentID]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].Columns[StudentID]"
                       cachedDataType="i4"
                       cachedName="StudentID"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
+                      externalMetadataColumnId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
                       lineageId="Package\DWH\STG_Grade.Outputs[OLE DB Source Output].Columns[StudentID]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Grade]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].Columns[Grade]"
                       cachedDataType="i8"
                       cachedName="Grade"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Grade]"
+                      externalMetadataColumnId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[Grade]"
                       lineageId="Package\DWH\STG_Grade.Outputs[OLE DB Source Output].Columns[Grade]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StudentSemester]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].Columns[StudentSemester]"
                       cachedDataType="i4"
                       cachedName="StudentSemester"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentSemester]"
+                      externalMetadataColumnId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[StudentSemester]"
                       lineageId="Package\DWH\STG_Grade.Outputs[OLE DB Source Output].Columns[StudentSemester]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="25"
                       cachedName="DepartmentID"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      externalMetadataColumnId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
                       lineageId="Package\DWH\STG_Grade.Outputs[OLE DB Source Output].Columns[DepartmentID]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total_Grade]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].Columns[Total_Grade]"
                       cachedDataType="i8"
                       cachedName="Total_Grade"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_Grade]"
+                      externalMetadataColumnId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[Total_Grade]"
                       lineageId="Package\DWH\STG_Grade.Outputs[OLE DB Source Output].Columns[Total_Grade]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Current_Date]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].Columns[Current_Date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="Current_Date"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
+                      externalMetadataColumnId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
                       lineageId="Package\DWH\STG_Grade.Outputs[OLE DB Source Output].Columns[Current_Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
                       dataType="i4"
                       name="StudentID" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Grade]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[Grade]"
                       dataType="i8"
                       name="Grade" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentSemester]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[StudentSemester]"
                       dataType="i4"
                       name="StudentSemester" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
                       codePage="1252"
                       dataType="str"
                       length="25"
                       name="DepartmentID" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_Grade]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[Total_Grade]"
                       dataType="i8"
                       name="Total_Grade" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
+                      refId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
                       dataType="dbTimeStamp"
                       name="Current_Date" />
                   </externalMetadataColumns>
@@ -389,22 +389,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DWH\DWH_Grade.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DWH\DWH_Grade.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DWH\DWH_Grade.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DWH\DWH_Grade.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DWH\DWH_Grade.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -413,11 +413,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\DWH\OLE DB Destination 1"
+              refId="Package\DWH\DWH_Graduates"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination 1"
+              name="DWH_Graduates"
               usesDispositions="true"
               version="4">
               <properties>
@@ -470,7 +470,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DWH\OLE DB Destination 1.Connections[OleDbConnection]"
+                  refId="Package\DWH\DWH_Graduates.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH]"
                   connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH]"
                   description="The OLE DB runtime connection used to access the database."
@@ -478,81 +478,81 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[StudentID]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].Columns[StudentID]"
                       cachedDataType="i4"
                       cachedName="StudentID"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentID]" />
+                      externalMetadataColumnId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[StudentID]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[StudentSemester]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].Columns[StudentSemester]"
                       cachedDataType="i4"
                       cachedName="StudentSemester"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StudentSemester]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentSemester]" />
+                      externalMetadataColumnId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[StudentSemester]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[StudentSemester]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="25"
                       cachedName="DepartmentID"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]" />
+                      externalMetadataColumnId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[DepartmentID]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[DepartmentName]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].Columns[DepartmentName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="DepartmentName"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentName]" />
+                      externalMetadataColumnId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[DepartmentName]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Current_Date]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].Columns[Current_Date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="Current_Date"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Date]" />
+                      externalMetadataColumnId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[Current_Date]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Grade_Perc]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].Columns[Grade_Perc]"
                       cachedDataType="i8"
                       cachedName="Grade_Perc"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Grade_Perc]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[Grade_Perc]" />
+                      externalMetadataColumnId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[Grade_Perc]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[Grade_Perc]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[StudentID]"
                       dataType="i4"
                       name="StudentID" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[StudentSemester]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[StudentSemester]"
                       dataType="i4"
                       name="StudentSemester" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
                       codePage="1252"
                       dataType="str"
                       length="25"
                       name="DepartmentID" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentName]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="DepartmentName" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
                       dataType="dbTimeStamp"
                       name="Current_Date" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Grade_Perc]"
+                      refId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input].ExternalColumns[Grade_Perc]"
                       dataType="i8"
                       name="Grade_Perc" />
                   </externalMetadataColumns>
@@ -560,22 +560,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DWH\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DWH\DWH_Graduates.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DWH\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DWH\DWH_Graduates.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DWH\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DWH\DWH_Graduates.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DWH\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DWH\DWH_Graduates.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DWH\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DWH\DWH_Graduates.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -584,11 +584,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\DWH\OLE DB Destination 2"
+              refId="Package\DWH\DWH_Prof_rate"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination 2"
+              name="DWH_Prof_rate"
               usesDispositions="true"
               version="4">
               <properties>
@@ -641,7 +641,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DWH\OLE DB Destination 2.Connections[OleDbConnection]"
+                  refId="Package\DWH\DWH_Prof_rate.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH]"
                   connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_DWH]"
                   description="The OLE DB runtime connection used to access the database."
@@ -649,89 +649,89 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input]"
+                  refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].Columns[CourseRate]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].Columns[CourseRate]"
                       cachedDataType="r8"
                       cachedName="CourseRate"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[CourseRate]"
+                      externalMetadataColumnId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[CourseRate]"
                       lineageId="Package\DWH\STG_Prof_rate.Outputs[OLE DB Source Output].Columns[CourseRate]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].Columns[CourseID]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].Columns[CourseID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="CourseID"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[CourseID]"
+                      externalMetadataColumnId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[CourseID]"
                       lineageId="Package\DWH\STG_Prof_rate.Outputs[OLE DB Source Output].Columns[CourseID]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].Columns[CourseName]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].Columns[CourseName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="55"
                       cachedName="CourseName"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[CourseName]"
+                      externalMetadataColumnId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[CourseName]"
                       lineageId="Package\DWH\STG_Prof_rate.Outputs[OLE DB Source Output].Columns[CourseName]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].Columns[ProfessorName]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].Columns[ProfessorName]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="ProfessorName"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorName]"
+                      externalMetadataColumnId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorName]"
                       lineageId="Package\DWH\STG_Prof_rate.Outputs[OLE DB Source Output].Columns[ProfessorName]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].Columns[ProfessorID]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].Columns[ProfessorID]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="ProfessorID"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorID]"
+                      externalMetadataColumnId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorID]"
                       lineageId="Package\DWH\STG_Prof_rate.Outputs[OLE DB Source Output].Columns[ProfessorID]" />
                     <inputColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].Columns[Current_Date]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].Columns[Current_Date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="Current_Date"
-                      externalMetadataColumnId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
+                      externalMetadataColumnId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
                       lineageId="Package\DWH\STG_Prof_rate.Outputs[OLE DB Source Output].Columns[Current_Date]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[CourseRate]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[CourseRate]"
                       dataType="r8"
                       name="CourseRate" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[CourseID]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[CourseID]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="CourseID" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[CourseName]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[CourseName]"
                       codePage="1252"
                       dataType="str"
                       length="55"
                       name="CourseName" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorName]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorName]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="ProfessorName" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorID]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[ProfessorID]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="ProfessorID" />
                     <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
+                      refId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input].ExternalColumns[Current_Date]"
                       dataType="dbTimeStamp"
                       name="Current_Date" />
                   </externalMetadataColumns>
@@ -739,230 +739,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DWH\OLE DB Destination 2.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DWH\DWH_Prof_rate.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DWH\OLE DB Destination 2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DWH\DWH_Prof_rate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DWH\OLE DB Destination 2.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DWH\DWH_Prof_rate.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DWH\OLE DB Destination 2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DWH\DWH_Prof_rate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DWH\OLE DB Destination 2.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\DWH\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[Graduates]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\DWH\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StudentID]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentID]"
-                      name="StudentID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentSemester]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StudentSemester]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[StudentSemester]"
-                      name="StudentSemester"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
-                      length="25"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentID]"
-                      name="DepartmentID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentName]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
-                      length="50"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentName]"
-                      name="DepartmentName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Date]"
-                      dataType="dbTimeStamp"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Current_Date]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[Current_Date]"
-                      name="Current_Date"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[Grade_Perc]"
-                      dataType="i8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Grade_Perc]"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[Grade_Perc]"
-                      name="Grade_Perc"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StudentID]"
-                      dataType="i4"
-                      name="StudentID" />
-                    <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StudentSemester]"
-                      dataType="i4"
-                      name="StudentSemester" />
-                    <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      name="DepartmentID" />
-                    <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="DepartmentName" />
-                    <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Current_Date]"
-                      dataType="dbTimeStamp"
-                      name="Current_Date" />
-                    <externalMetadataColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Grade_Perc]"
-                      dataType="i8"
-                      name="Grade_Perc" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StudentID]"
-                      dataType="i4"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StudentID]"
-                      name="StudentID" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StudentSemester]"
-                      dataType="i4"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StudentSemester]"
-                      name="StudentSemester" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
-                      codePage="1252"
-                      dataType="str"
-                      length="25"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
-                      name="DepartmentID" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentName]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentName]"
-                      name="DepartmentName" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Current_Date]"
-                      dataType="dbTimeStamp"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Current_Date]"
-                      name="Current_Date" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Grade_Perc]"
-                      dataType="i8"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Grade_Perc]"
-                      name="Grade_Perc" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DWH\DWH_Prof_rate.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1165,6 +957,214 @@
                       refId="Package\DWH\STG_Grade.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\DWH\STG_Grade.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DWH\STG_Graduates"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="STG_Graduates"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Graduates]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DWH\STG_Graduates.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-RA45GHS0\SQLEXPRESS.Faculty_STG1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[StudentID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[StudentID]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[StudentID]"
+                      name="StudentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[StudentSemester]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[StudentSemester]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[StudentSemester]"
+                      name="StudentSemester"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                      length="25"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[DepartmentID]"
+                      name="DepartmentID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[DepartmentName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
+                      length="50"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[DepartmentName]"
+                      name="DepartmentName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[Current_Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[Current_Date]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[Current_Date]"
+                      name="Current_Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[Grade_Perc]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[Grade_Perc]"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].Columns[Grade_Perc]"
+                      name="Grade_Perc"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[StudentID]"
+                      dataType="i4"
+                      name="StudentID" />
+                    <externalMetadataColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[StudentSemester]"
+                      dataType="i4"
+                      name="StudentSemester" />
+                    <externalMetadataColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[DepartmentID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="DepartmentID" />
+                    <externalMetadataColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[DepartmentName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DepartmentName" />
+                    <externalMetadataColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[Current_Date]"
+                      dataType="dbTimeStamp"
+                      name="Current_Date" />
+                    <externalMetadataColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output].ExternalColumns[Grade_Perc]"
+                      dataType="i8"
+                      name="Grade_Perc" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[StudentID]"
+                      dataType="i4"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[StudentID]"
+                      name="StudentID" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[StudentSemester]"
+                      dataType="i4"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[StudentSemester]"
+                      name="StudentSemester" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[DepartmentID]"
+                      name="DepartmentID" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[DepartmentName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[DepartmentName]"
+                      name="DepartmentName" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[Current_Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[Current_Date]"
+                      name="Current_Date" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[Grade_Perc]"
+                      dataType="i8"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[Grade_Perc]"
+                      name="Grade_Perc" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1396,19 +1396,19 @@
           <paths>
             <path
               refId="Package\DWH.Paths[OLE DB Source Output]"
-              endId="Package\DWH\OLE DB Destination 2.Inputs[OLE DB Destination Input]"
+              endId="Package\DWH\DWH_Prof_rate.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DWH\STG_Prof_rate.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DWH.Paths[OLE DB Source Output1]"
-              endId="Package\DWH\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\DWH\DWH_Grade.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DWH\STG_Grade.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\DWH.Paths[OLE DB Source Output2]"
-              endId="Package\DWH\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+              endId="Package\DWH\DWH_Graduates.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\DWH\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\DWH\STG_Graduates.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -8975,43 +8975,55 @@ where [refTable].[StudentID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="174.792452830189,41.6603773584906"
-          Id="Package\DWH\OLE DB Destination 1"
-          TopLeft="789.999988228083,153.999997705221" />
+          Size="153.962264150944,41.6603773584906"
+          Id="Package\DWH\DWH_Graduates"
+          TopLeft="747.692296550824,150.923074674148" />
         <NodeLayout
           Size="144.905660377359,41.6603773584906"
           Id="Package\DWH\STG_Prof_rate"
           TopLeft="517.999992281199,29.9999995529652" />
         <NodeLayout
-          Size="174.792452830189,41.6603773584906"
-          Id="Package\DWH\OLE DB Destination 2"
+          Size="148.528301886793,41.6603773584906"
+          Id="Package\DWH\DWH_Prof_rate"
           TopLeft="497.999992579222,173.999997407198" />
         <NodeLayout
-          Size="148.528301886793,41.6603773584906"
-          Id="Package\DWH\OLE DB Source"
-          TopLeft="779.999988377094,30.999999538064" />
+          Size="150.33962264151,41.6603773584906"
+          Id="Package\DWH\STG_Graduates"
+          TopLeft="753.076911855202,30.999999538064" />
         <NodeLayout
           Size="131.320754716982,41.6603773584906"
           Id="Package\DWH\STG_Grade"
-          TopLeft="24.999999627471,21.9999996721743" />
+          TopLeft="329.615379703733,31.9999995231626" />
         <NodeLayout
-          Size="166.641509433963,41.6603773584906"
-          Id="Package\DWH\OLE DB Destination"
-          TopLeft="21.9999996721745,174.999997392297" />
+          Size="134.943396226416,41.6603773584906"
+          Id="Package\DWH\DWH_Grade"
+          TopLeft="310.461533835301,171.923074361224" />
         <EdgeLayout
           Id="Package\DWH.Paths[OLE DB Source Output]"
-          TopLeft="587.924520732097,71.6603769114558">
+          TopLeft="590.452822469878,71.6603769114558">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,102.339620495742"
+              EndConnector="-18.1886789472601,102.339620495742"
               Start="0,0"
-              End="0,94.8396204957423">
+              End="-18.1886789472601,94.8396204957423">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,94.8396204957423" />
+                    End="0,47.1698102478711" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.1698102478711"
+                    Point2="0,51.1698102478711"
+                    Point3="-4,51.1698102478711" />
+                  <mssgle:LineSegment
+                    End="-14.1886789472601,51.1698102478711" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.1886789472601,51.1698102478711"
+                    Point2="-18.1886789472601,51.1698102478711"
+                    Point3="-18.1886789472601,55.1698102478711" />
+                  <mssgle:LineSegment
+                    End="-18.1886789472601,94.8396204957423" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9022,30 +9034,18 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DWH.Paths[OLE DB Source Output2]"
-          TopLeft="854.26413932049,72.6603768965546">
+          TopLeft="826.460075901127,72.6603768965546">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="23.1320753226869,81.3396208086666"
+              EndConnector="0,78.2626977775931"
               Start="0,0"
-              End="23.1320753226869,73.8396208086666">
+              End="0,70.7626977775931">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.6698104043333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.6698104043333"
-                    Point2="0,40.6698104043333"
-                    Point3="4,40.6698104043333" />
-                  <mssgle:LineSegment
-                    End="19.1320753226869,40.6698104043333" />
-                  <mssgle:CubicBezierSegment
-                    Point1="19.1320753226869,40.6698104043333"
-                    Point2="23.1320753226869,40.6698104043333"
-                    Point3="23.1320753226869,44.6698104043333" />
-                  <mssgle:LineSegment
-                    End="23.1320753226869,73.8396208086666" />
+                    End="0,70.7626977775931" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9056,30 +9056,30 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DWH.Paths[OLE DB Source Output1]"
-          TopLeft="90.6603769859615,63.6603770306649">
+          TopLeft="395.275757062223,73.6603768816532">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="14.660377403194,111.339620361632"
+              EndConnector="-17.3425251137147,98.2626974795704"
               Start="0,0"
-              End="14.660377403194,103.839620361632">
+              End="-17.3425251137147,90.7626974795704">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.669810180816" />
+                    End="0,45.1313487397852" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,51.669810180816"
-                    Point2="0,55.669810180816"
-                    Point3="4,55.669810180816" />
+                    Point1="0,45.1313487397852"
+                    Point2="0,49.1313487397852"
+                    Point3="-4,49.1313487397852" />
                   <mssgle:LineSegment
-                    End="10.660377403194,55.669810180816" />
+                    End="-13.3425251137147,49.1313487397852" />
                   <mssgle:CubicBezierSegment
-                    Point1="10.660377403194,55.669810180816"
-                    Point2="14.660377403194,55.669810180816"
-                    Point3="14.660377403194,59.669810180816" />
+                    Point1="-13.3425251137147,49.1313487397852"
+                    Point2="-17.3425251137147,49.1313487397852"
+                    Point3="-17.3425251137147,53.1313487397852" />
                   <mssgle:LineSegment
-                    End="14.660377403194,103.839620361632" />
+                    End="-17.3425251137147,90.7626974795704" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9092,7 +9092,7 @@ where [refTable].[StudentID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DWH\OLE DB Destination 1">
+    design-time-name="Package\DWH\DWH_Graduates">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9118,7 +9118,7 @@ where [refTable].[StudentID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DWH\OLE DB Destination 2">
+    design-time-name="Package\DWH\DWH_Prof_rate">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9131,7 +9131,7 @@ where [refTable].[StudentID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DWH\OLE DB Source">
+    design-time-name="Package\DWH\STG_Graduates">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9157,7 +9157,7 @@ where [refTable].[StudentID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DWH\OLE DB Destination">
+    design-time-name="Package\DWH\DWH_Grade">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9175,77 +9175,77 @@ where [refTable].[StudentID] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172,41.6"
-          Id="Package\From Excel to Database\Student_Destination"
-          TopLeft="9.23076909322005,179.999997317791" />
-        <NodeLayout
-          Size="112,41.6"
-          Id="Package\From Excel to Database\Student"
-          TopLeft="22.6923073541659,13.3076921093922" />
-        <NodeLayout
-          Size="164,41.6"
-          Id="Package\From Excel to Database\Data Conversion 2"
-          TopLeft="399.999994039536,95.3846139632738" />
-        <NodeLayout
-          Size="164,41.6"
-          Id="Package\From Excel to Database\Data Conversion 4"
-          TopLeft="794.766631197765,101.399999294877" />
-        <NodeLayout
-          Size="132.8,41.6"
-          Id="Package\From Excel to Database\Department"
-          TopLeft="405.384609343914,20.7692304597451" />
-        <NodeLayout
-          Size="156,41.6"
-          Id="Package\From Excel to Database\Data Conversion"
-          TopLeft="12.3076921242934,103.076921540957" />
-        <NodeLayout
-          Size="128,41.6"
-          Id="Package\From Excel to Database\Professors"
-          TopLeft="206.153843081914,11.9999998211861" />
-        <NodeLayout
-          Size="100,41.6"
+          Size="99.622641509434,41.6603773584906"
           Id="Package\From Excel to Database\Rate"
           TopLeft="1025.07402161187,30.8148146005324" />
         <NodeLayout
-          Size="185.6,41.6"
-          Id="Package\From Excel to Database\Professors_Destination"
-          TopLeft="204.615381566378,179.230766560023" />
-        <NodeLayout
-          Size="164,41.6"
-          Id="Package\From Excel to Database\Data Conversion 3"
-          TopLeft="590.769221966083,95.3846139632739" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\From Excel to Database\Grade_Destination"
-          TopLeft="798.333291899829,178.533332091835" />
-        <NodeLayout
-          Size="164,41.6"
-          Id="Package\From Excel to Database\Data Conversion 1"
-          TopLeft="197.692304746463,96.9230754788105" />
-        <NodeLayout
-          Size="107.2,41.6"
-          Id="Package\From Excel to Database\Grade"
-          TopLeft="782.076914375791,24.6923073243637" />
-        <NodeLayout
-          Size="164,41.6"
-          Id="Package\From Excel to Database\Data Conversion 5"
-          TopLeft="1023.18514137393,110.740739970663" />
-        <NodeLayout
-          Size="190.4,41.6"
+          Size="190.188679245283,41.6603773584906"
           Id="Package\From Excel to Database\Department_Destination"
           TopLeft="395.384609492925,180.769228075559" />
         <NodeLayout
-          Size="169.6,41.6"
+          Size="172.075471698114,41.6603773584906"
+          Id="Package\From Excel to Database\Student_Destination"
+          TopLeft="9.23076909322005,179.999997317791" />
+        <NodeLayout
+          Size="163.924528301887,41.6603773584906"
+          Id="Package\From Excel to Database\Data Conversion 3"
+          TopLeft="590.769221966083,95.3846139632739" />
+        <NodeLayout
+          Size="127.698113207548,41.6603773584906"
+          Id="Package\From Excel to Database\Professors"
+          TopLeft="206.153843081914,11.9999998211861" />
+        <NodeLayout
+          Size="169.358490566038,41.6603773584906"
           Id="Package\From Excel to Database\Course_Destination"
           TopLeft="588.461529692778,176.923074286718" />
         <NodeLayout
-          Size="158.4,41.6"
+          Size="163.924528301887,41.6603773584906"
+          Id="Package\From Excel to Database\Data Conversion 5"
+          TopLeft="1023.18514137393,110.740739970663" />
+        <NodeLayout
+          Size="106.867924528302,41.6603773584906"
+          Id="Package\From Excel to Database\Grade"
+          TopLeft="782.076914375791,24.6923073243637" />
+        <NodeLayout
+          Size="163.924528301887,41.6603773584906"
+          Id="Package\From Excel to Database\Data Conversion 2"
+          TopLeft="399.999994039536,95.3846139632738" />
+        <NodeLayout
+          Size="163.924528301887,41.6603773584906"
+          Id="Package\From Excel to Database\Data Conversion 4"
+          TopLeft="794.766631197765,101.399999294877" />
+        <NodeLayout
+          Size="133.132075471699,41.6603773584906"
+          Id="Package\From Excel to Database\Department"
+          TopLeft="405.384609343914,20.7692304597451" />
+        <NodeLayout
+          Size="155.773584905661,41.6603773584906"
+          Id="Package\From Excel to Database\Data Conversion"
+          TopLeft="12.3076921242934,103.076921540957" />
+        <NodeLayout
+          Size="185.660377358491,41.6603773584906"
+          Id="Package\From Excel to Database\Professors_Destination"
+          TopLeft="204.615381566378,179.230766560023" />
+        <NodeLayout
+          Size="158.490566037736,41.6603773584906"
           Id="Package\From Excel to Database\Rate_Destination"
           TopLeft="1011.44439967198,178.148146909328" />
         <NodeLayout
-          Size="112,41.6"
+          Size="112.301886792453,41.6603773584906"
+          Id="Package\From Excel to Database\Student"
+          TopLeft="22.6923073541659,13.3076921093922" />
+        <NodeLayout
+          Size="164.830188679246,41.6603773584906"
+          Id="Package\From Excel to Database\Grade_Destination"
+          TopLeft="798.333291899829,178.533332091835" />
+        <NodeLayout
+          Size="112.301886792453,41.6603773584906"
           Id="Package\From Excel to Database\Course"
           TopLeft="598.461529543767,21.5384612175135" />
+        <NodeLayout
+          Size="163.924528301887,41.6603773584906"
+          Id="Package\From Excel to Database\Data Conversion 1"
+          TopLeft="197.692304746463,96.9230754788105" />
         <EdgeLayout
           Id="Package\From Excel to Database.Paths[Excel Source Output5]"
           TopLeft="1075.07402161187,72.4148146005324">
@@ -9789,7 +9789,7 @@ where [refTable].[StudentID] = ?</property>
         <NodeLayout
           Size="155.773584905661,41.6603773584906"
           Id="Package\STG\time_dimension 2 1"
-          TopLeft="1228.4444261392,709.678529442352" />
+          TopLeft="1862.08078553551,696.042166009186" />
         <NodeLayout
           Size="104.150943396227,41.6603773584906"
           Id="Package\STG\Sort 2"
@@ -9805,7 +9805,7 @@ where [refTable].[StudentID] = ?</property>
         <NodeLayout
           Size="164.830188679246,41.6603773584906"
           Id="Package\STG\OLE DB Source 1 1"
-          TopLeft="1235.06355951724,179.999997317791" />
+          TopLeft="1873.24537339127,165.454542989081" />
         <NodeLayout
           Size="128.603773584906,41.6603773584906"
           Id="Package\STG\Semester8"
@@ -9833,7 +9833,7 @@ where [refTable].[StudentID] = ?</property>
         <NodeLayout
           Size="104.150943396227,41.6603773584906"
           Id="Package\STG\Sort 3"
-          TopLeft="1216.66664853692,368.867921895763" />
+          TopLeft="1850.30300793323,355.231558462597" />
         <NodeLayout
           Size="153.962264150944,41.6603773584906"
           Id="Package\STG\Lookup_Student"
@@ -9841,11 +9841,11 @@ where [refTable].[StudentID] = ?</property>
         <NodeLayout
           Size="174.792452830189,41.6603773584906"
           Id="Package\STG\OLE DB Destination 2 1"
-          TopLeft="1227.5260970921,768.734558739992" />
+          TopLeft="1861.16245648841,755.098195306826" />
         <NodeLayout
           Size="118.641509433963,41.6603773584906"
           Id="Package\STG\Lookup 4 1"
-          TopLeft="1323.04038432557,562.061607359674" />
+          TopLeft="1956.67674372188,548.425243926508" />
         <NodeLayout
           Size="193.811320754717,41.6603773584906"
           Id="Package\STG\Final_Grade_Destination"
@@ -9873,15 +9873,15 @@ where [refTable].[StudentID] = ?</property>
         <NodeLayout
           Size="112.301886792453,41.6603773584906"
           Id="Package\STG\Sort 2 1"
-          TopLeft="1254.60026990529,625.133956823078" />
+          TopLeft="1888.2366293016,611.497593389912" />
         <NodeLayout
           Size="104.150943396227,41.6603773584906"
           Id="Package\STG\Sort 4"
-          TopLeft="1428.88886759679,293.333329757055" />
+          TopLeft="2062.5252269931,279.696966323889" />
         <NodeLayout
           Size="126.792452830189,41.6603773584906"
           Id="Package\STG\Merge Join"
-          TopLeft="1314.4444248577,451.446536807519" />
+          TopLeft="1948.08078425401,437.810173374353" />
         <NodeLayout
           Size="200.150943396227,41.6603773584906"
           Id="Package\STG\SGrade_Rate_Destination"
@@ -9893,7 +9893,7 @@ where [refTable].[StudentID] = ?</property>
         <NodeLayout
           Size="164.830188679246,41.6603773584906"
           Id="Package\STG\OLE DB Source 1 1 1"
-          TopLeft="1441.66664518416,107.817611438767" />
+          TopLeft="2198.03027547896,86.9085208412458" />
         <NodeLayout
           Size="106.867924528302,41.6603773584906"
           Id="Package\STG\Grade"
@@ -9930,7 +9930,7 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Sort Output4]"
-          TopLeft="1308.54121594677,666.794334181569">
+          TopLeft="1942.17757534308,653.157970748403">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10008,7 +10008,7 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Sort Output1]"
-          TopLeft="1480.9643392949,334.993707115545">
+          TopLeft="2114.60069869121,321.357343682379">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10042,7 +10042,7 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Sort Output]"
-          TopLeft="1268.74212023503,410.528299254254">
+          TopLeft="1902.37847963134,396.891935821088">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10166,30 +10166,30 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[OLE DB Source Output1]"
-          TopLeft="1317.47865385686,221.660374676282">
+          TopLeft="1955.66046773089,207.114920347571">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-48.7365336218293,147.207547219482"
+              EndConnector="-53.2819880995517,148.116638115026"
               Start="0,0"
-              End="-48.7365336218293,139.707547219482">
+              End="-53.2819880995517,140.616638115026">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,69.6037736097409" />
+                    End="0,70.0583190575129" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,69.6037736097409"
-                    Point2="0,73.6037736097409"
-                    Point3="-4,73.6037736097409" />
+                    Point1="0,70.0583190575129"
+                    Point2="0,74.0583190575129"
+                    Point3="-4,74.0583190575129" />
                   <mssgle:LineSegment
-                    End="-44.7365336218293,73.6037736097409" />
+                    End="-49.2819880995517,74.0583190575129" />
                   <mssgle:CubicBezierSegment
-                    Point1="-44.7365336218293,73.6037736097409"
-                    Point2="-48.7365336218293,73.6037736097409"
-                    Point3="-48.7365336218293,77.6037736097409" />
+                    Point1="-49.2819880995517,74.0583190575129"
+                    Point2="-53.2819880995517,74.0583190575129"
+                    Point3="-53.2819880995517,78.0583190575129" />
                   <mssgle:LineSegment
-                    End="-48.7365336218293,139.707547219482" />
+                    End="-53.2819880995517,140.616638115026" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10200,30 +10200,30 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[OLE DB Source Output]"
-          TopLeft="1524.08173952378,149.477988797258">
+          TopLeft="2280.44536981858,128.568898199736">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-43.117400228884,143.855340959797"
+              EndConnector="-165.844671127373,151.128068124153"
               Start="0,0"
-              End="-43.117400228884,136.355340959797">
+              End="-165.844671127373,143.628068124153">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,67.9276704798986" />
+                    End="0,71.5640340620763" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,67.9276704798986"
-                    Point2="0,71.9276704798986"
-                    Point3="-4,71.9276704798986" />
+                    Point1="0,71.5640340620763"
+                    Point2="0,75.5640340620763"
+                    Point3="-4,75.5640340620763" />
                   <mssgle:LineSegment
-                    End="-39.117400228884,71.9276704798986" />
+                    End="-161.844671127373,75.5640340620763" />
                   <mssgle:CubicBezierSegment
-                    Point1="-39.117400228884,71.9276704798986"
-                    Point2="-43.117400228884,71.9276704798986"
-                    Point3="-43.117400228884,75.9276704798986" />
+                    Point1="-161.844671127373,75.5640340620763"
+                    Point2="-165.844671127373,75.5640340620763"
+                    Point3="-165.844671127373,79.5640340620763" />
                   <mssgle:LineSegment
-                    End="-43.117400228884,136.355340959797" />
+                    End="-165.844671127373,143.628068124153" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10234,7 +10234,7 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Merge Join Output]"
-          TopLeft="1380.10089515767,493.10691416601">
+          TopLeft="2013.73725455398,479.470550732844">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10288,7 +10288,7 @@ where [refTable].[StudentID] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-59.1037474677099,31.732050573769,96.3827734375,11.609375"
+              BoundingBox="-59.10374746771,31.732050573769,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10330,7 +10330,7 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Lookup Match Output3]"
-          TopLeft="1323.04038432557,582.891796038919">
+          TopLeft="1956.67674372188,569.255432605753">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -10456,7 +10456,7 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Derived Column Output4]"
-          TopLeft="1228.4444261392,730.508718121597">
+          TopLeft="1862.08078553551,716.872354688431">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
