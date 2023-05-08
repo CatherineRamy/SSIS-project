@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="178"
-  DTS:VersionGUID="{3A31BF87-9343-4572-8EB7-9DA51DA5CA53}">
+  DTS:VersionBuild="179"
+  DTS:VersionGUID="{44ABC51B-6FB7-4561-84D4-D8DC70E764FF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -201,7 +201,6 @@
       DTS:refId="Package\Delete all records"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{4DF0CAFB-99A5-41F2-9B08-AED69E5F226A}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -219,7 +218,6 @@
       DTS:refId="Package\Delete all records from STG"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
       DTS:DTSID="{F7D903D3-BCB2-4CDA-BB93-46B7F84CFC22}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -237,7 +235,6 @@
       DTS:refId="Package\DWH"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{acb29ed7-eb70-46b0-ab96-80ac2879cb13}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -1417,58 +1414,9 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Execute SQL Task"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{9B66BB84-C9BD-4A75-97B3-4C4325C9AFF4}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Execute SQL Task"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{9EEED650-B736-4EF2-B13C-FCFE7E758E1F}"
-          SQLTask:SqlStatementSource=" SELECT top 1 StudentID&#xA; FROM DWH_Grade G1&#xA;WHERE EXISTS (&#xA;    SELECT StudentSemester, MAX(Grade)&#xA;    FROM DWH_Grade G2&#xA;    WHERE G1.StudentSemester = G2.StudentSemester  &#xA;    GROUP BY StudentSemester&#xA;    HAVING MAX(Grade) = G1.Grade&#xA;);"
-          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding
-            SQLTask:ResultName="0"
-            SQLTask:DtsVariableName="User::TopStu" />
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::TopStu"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="131"
-            SQLTask:ParameterSize="-1" />
-        </SQLTask:SqlTaskData>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Execute SQL Task 1"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{40D0D8A6-4E87-477C-AAEE-F1349BE2A190}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Execute SQL Task 1"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:PropertyExpression
-        DTS:Name="SqlStatementSource">"insert into [Table_1] values ( ?)
-"</DTS:PropertyExpression>
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{7AC7C2AA-CE86-499D-B19E-0BADA74CFFD0}"
-          SQLTask:SqlStatementSource="insert into [Table_1] values ( ?)&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
       DTS:refId="Package\From Excel to Database"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{DFBC32F2-C9E9-45DE-AE2D-872427BFAB6F}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -4076,7 +4024,6 @@
       DTS:refId="Package\STG"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:Disabled="True"
       DTS:DTSID="{9C02016E-2A93-4CD1-849C-08D204F16A30}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -8772,34 +8719,34 @@ where [refTable].[StudentID] = ?</property>
               startId="Package\STG\time_dimension 2 1.Outputs[Derived Column Output]" />
             <path
               refId="Package\STG.Paths[Lookup Match Output5]"
-              endId="Package\STG\Sort 1.Inputs[Sort Input]"
+              endId="Package\STG\Semester8.Inputs[Conditional Split Input]"
               name="Lookup Match Output"
-              startId="Package\STG\Lookup_Student.Outputs[Lookup Match Output]" />
+              startId="Package\STG\Lookup_Student2.Outputs[Lookup Match Output]" />
             <path
               refId="Package\STG.Paths[Lookup Match Output3]"
-              endId="Package\STG\Lookup_Professor.Inputs[Lookup Input]"
-              name="Lookup Match Output"
-              startId="Package\STG\Lookup_Course.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\STG.Paths[Lookup Match Output4]"
-              endId="Package\STG\SortGrade.Inputs[Sort Input]"
-              name="Lookup Match Output"
-              startId="Package\STG\Lookup_Department.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\STG.Paths[Lookup Match Output1]"
               endId="Package\STG\Sort 2 1.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\STG\Lookup 4 1.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\STG.Paths[Lookup Match Output]"
+              refId="Package\STG.Paths[Lookup Match Output4]"
               endId="Package\STG\Sort 2.Inputs[Sort Input]"
               name="Lookup Match Output"
               startId="Package\STG\Lookup_Professor.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\STG.Paths[Lookup Match Output2]"
-              endId="Package\STG\Semester8.Inputs[Conditional Split Input]"
+              refId="Package\STG.Paths[Lookup Match Output1]"
+              endId="Package\STG\Lookup_Professor.Inputs[Lookup Input]"
               name="Lookup Match Output"
-              startId="Package\STG\Lookup_Student2.Outputs[Lookup Match Output]" />
+              startId="Package\STG\Lookup_Course.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\STG.Paths[Lookup Match Output]"
+              endId="Package\STG\Sort 1.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\STG\Lookup_Student.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\STG.Paths[Lookup Match Output2]"
+              endId="Package\STG\SortGrade.Inputs[Sort Input]"
+              name="Lookup Match Output"
+              startId="Package\STG\Lookup_Department.Outputs[Lookup Match Output]" />
             <path
               refId="Package\STG.Paths[Merge Join Output]"
               endId="Package\STG\Lookup 4 1.Inputs[Lookup Input]"
@@ -8832,29 +8779,29 @@ where [refTable].[StudentID] = ?</property>
               startId="Package\STG\Rate.Outputs[OLE DB Source Output]" />
             <path
               refId="Package\STG.Paths[Sort Output4]"
+              endId="Package\STG\time_dimension 2 1.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\STG\Sort 2 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\STG.Paths[Sort Output]"
               endId="Package\STG\Merge Join.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\STG\Sort 3.Outputs[Sort Output]" />
             <path
-              refId="Package\STG.Paths[Sort Output]"
+              refId="Package\STG.Paths[Sort Output1]"
               endId="Package\STG\Merge Join.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\STG\Sort 4.Outputs[Sort Output]" />
             <path
-              refId="Package\STG.Paths[Sort Output1]"
+              refId="Package\STG.Paths[Sort Output2]"
               endId="Package\STG\SGrade_time_dimensio.Inputs[Derived Column Input]"
               name="Sort Output"
               startId="Package\STG\SortGrade.Outputs[Sort Output]" />
             <path
-              refId="Package\STG.Paths[Sort Output2]"
+              refId="Package\STG.Paths[Sort Output3]"
               endId="Package\STG\Rate_time_dimension.Inputs[Derived Column Input]"
               name="Sort Output"
               startId="Package\STG\Sort 2.Outputs[Sort Output]" />
-            <path
-              refId="Package\STG.Paths[Sort Output3]"
-              endId="Package\STG\time_dimension 2 1.Inputs[Derived Column Input]"
-              name="Sort Output"
-              startId="Package\STG\Sort 2 1.Outputs[Sort Output]" />
             <path
               refId="Package\STG.Paths[Sort Output5]"
               endId="Package\STG\Calculated Grade.Inputs[Derived Column Input]"
@@ -8891,22 +8838,6 @@ where [refTable].[StudentID] = ?</property>
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\STG" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
-      DTS:CreationName=""
-      DTS:DTSID="{DB20DF2F-BCC6-436E-B45D-2DC3490CD968}"
-      DTS:From="Package\DWH"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 3"
-      DTS:To="Package\Execute SQL Task" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{AE36A08F-AFA6-4C94-A41E-CFE485AF9B63}"
-      DTS:From="Package\Execute SQL Task"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Execute SQL Task 1" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
       DTS:CreationName=""
       DTS:DTSID="{C9E2E7EF-1467-487D-B516-279912DC4333}"
@@ -8928,31 +8859,23 @@ where [refTable].[StudentID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="159.2,41.6"
+          Size="159.396226415095,41.6603773584906"
           Id="Package\Delete all records"
           TopLeft="311.923060552814,47.5692304323269" />
         <NodeLayout
-          Size="200.8,41.6"
+          Size="201.056603773585,41.6603773584906"
           Id="Package\Delete all records from STG"
           TopLeft="289.166650867297,199.333331947194" />
         <NodeLayout
-          Size="101.6,41.6"
+          Size="101.433962264151,41.6603773584906"
           Id="Package\DWH"
           TopLeft="333.205112444922,383.039863107043" />
         <NodeLayout
-          Size="160,41.6"
-          Id="Package\Execute SQL Task"
-          TopLeft="309.99999538064,476.999992892146" />
-        <NodeLayout
-          Size="168.8,41.6"
-          Id="Package\Execute SQL Task 1"
-          TopLeft="302.999995484948,624.320746655453" />
-        <NodeLayout
-          Size="189.6,41.6"
+          Size="189.283018867925,41.6603773584906"
           Id="Package\From Excel to Database"
           TopLeft="294.743574556505,130.097434998868" />
         <NodeLayout
-          Size="100,41.6"
+          Size="99.622641509434,41.6603773584906"
           Id="Package\STG"
           TopLeft="339.423058652917,299.841023934993" />
         <EdgeLayout
@@ -9013,50 +8936,6 @@ where [refTable].[StudentID] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,51.3473146293084" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="387.036516176932,424.700240465534">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,52.2997524266125"
-              Start="0,0"
-              End="0,44.7997524266125">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.7997524266125" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="388.688674678077,518.660370250637">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,105.660376404816"
-              Start="0,0"
-              End="0,98.1603764048161">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,98.1603764048161" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9743,98 +9622,7 @@ where [refTable].[StudentID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\From Excel to Database\Student_Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\From Excel to Database\Student">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\From Excel to Database\Department">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\From Excel to Database\Professors">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\From Excel to Database\Rate">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\From Excel to Database\Professors_Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\From Excel to Database\Grade_Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\From Excel to Database\Grade">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9860,6 +9648,32 @@ where [refTable].[StudentID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\From Excel to Database\Student_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\From Excel to Database\Professors">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\From Excel to Database\Course_Destination">
     <Properties>
       <Property>
@@ -9873,7 +9687,72 @@ where [refTable].[StudentID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\From Excel to Database\Grade">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\From Excel to Database\Department">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\From Excel to Database\Professors_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\From Excel to Database\Rate_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\From Excel to Database\Student">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\From Excel to Database\Grade_Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -9904,129 +9783,129 @@ where [refTable].[StudentID] = ?</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="156,41.6"
-          Id="Package\STG\time_dimension 2 1"
-          TopLeft="1228.4444261392,709.678529442352" />
-        <NodeLayout
-          Size="126.4,41.6"
-          Id="Package\STG\Merge Join"
-          TopLeft="1314.4444248577,451.446536807519" />
-        <NodeLayout
-          Size="126.4,41.6"
-          Id="Package\STG\SortGrade"
-          TopLeft="1058.61536884079,467.790996733442" />
-        <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\STG\Calculated Grade"
-          TopLeft="279.999995827675,425.018862589913" />
-        <NodeLayout
-          Size="186.4,41.6"
-          Id="Package\STG\Final_Rate_Destination"
-          TopLeft="668.798832690507,611.316978668114" />
-        <NodeLayout
-          Size="112,41.6"
-          Id="Package\STG\Sort 2 1"
-          TopLeft="1254.60026990529,625.133956823078" />
-        <NodeLayout
-          Size="172.8,41.6"
-          Id="Package\STG\Lookup_Department"
-          TopLeft="1037.83331786841,377.333327710629" />
-        <NodeLayout
-          Size="107.2,41.6"
-          Id="Package\STG\Grade"
-          TopLeft="289.999995678663,13.0000000447035" />
-        <NodeLayout
-          Size="100,41.6"
-          Id="Package\STG\Rate"
-          TopLeft="676.336295115652,22.5824172459133" />
-        <NodeLayout
-          Size="128.8,41.6"
-          Id="Package\STG\Semester8"
-          TopLeft="1014.60859662381,301.730764734631" />
-        <NodeLayout
-          Size="154.4,41.6"
-          Id="Package\STG\Lookup_Student"
-          TopLeft="296.999995574355,215.999996781349" />
-        <NodeLayout
-          Size="186.4,41.6"
-          Id="Package\STG\Grade_time_dimension"
-          TopLeft="281.818177618764,514.716975388355" />
-        <NodeLayout
-          Size="118.4,41.6"
-          Id="Package\STG\Lookup 4 1"
-          TopLeft="1323.04038432557,562.061607359674" />
-        <NodeLayout
-          Size="114.4,41.6"
-          Id="Package\STG\SGrade"
-          TopLeft="1028.33331800997,36.6666661202908" />
-        <NodeLayout
-          Size="104,41.6"
-          Id="Package\STG\Sort 3"
-          TopLeft="1216.66664853692,368.867921895763" />
-        <NodeLayout
-          Size="193.6,41.6"
-          Id="Package\STG\Final_Grade_Destination"
-          TopLeft="265.818177857182,594.672721248595" />
-        <NodeLayout
-          Size="104,41.6"
-          Id="Package\STG\Sort 2"
-          TopLeft="691.428561125483,428.827488441801" />
-        <NodeLayout
-          Size="134.4,41.6"
+          Size="134.037735849057,41.6603773584906"
           Id="Package\STG\Sum_Grade"
           TopLeft="294.999995604157,92.999998614192" />
         <NodeLayout
-          Size="179.2,41.6"
-          Id="Package\STG\Rate_time_dimension"
-          TopLeft="665.27271735939,513.372061061076" />
+          Size="155.773584905661,41.6603773584906"
+          Id="Package\STG\time_dimension 2 1"
+          TopLeft="1228.4444261392,709.678529442352" />
         <NodeLayout
-          Size="187.2,41.6"
-          Id="Package\STG\SGrade_time_dimensio"
-          TopLeft="1025.99998471141,534.830183881071" />
+          Size="104.150943396227,41.6603773584906"
+          Id="Package\STG\Sort 2"
+          TopLeft="691.428561125483,428.827488441801" />
         <NodeLayout
-          Size="104,41.6"
-          Id="Package\STG\Sort 4"
-          TopLeft="1428.88886759679,293.333329757055" />
+          Size="114.11320754717,41.6603773584906"
+          Id="Package\STG\SGrade"
+          TopLeft="1028.33331800997,36.6666661202908" />
         <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\STG\Lookup_Professor"
-          TopLeft="692.142846829124,318.376618632442" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\STG\OLE DB Source 1 1 1"
-          TopLeft="1441.66664518416,107.817611438767" />
-        <NodeLayout
-          Size="178.4,41.6"
-          Id="Package\STG\Average_CourseRate"
-          TopLeft="685.292338938241,126.593404707018" />
-        <NodeLayout
-          Size="105.6,41.6"
-          Id="Package\STG\Sort 1"
-          TopLeft="300.99999551475,332.599995782971" />
-        <NodeLayout
-          Size="200,41.6"
-          Id="Package\STG\SGrade_Rate_Destination"
-          TopLeft="1026.13931740727,622.693754380691" />
-        <NodeLayout
-          Size="174.4,41.6"
-          Id="Package\STG\OLE DB Destination 2 1"
-          TopLeft="1227.5260970921,768.734558739992" />
-        <NodeLayout
-          Size="160,41.6"
+          Size="160.301886792453,41.6603773584906"
           Id="Package\STG\Lookup_Student2"
           TopLeft="1020.83331812173,206.666663587093" />
         <NodeLayout
-          Size="164.8,41.6"
+          Size="164.830188679246,41.6603773584906"
           Id="Package\STG\OLE DB Source 1 1"
           TopLeft="1235.06355951724,179.999997317791" />
         <NodeLayout
-          Size="152,41.6"
+          Size="128.603773584906,41.6603773584906"
+          Id="Package\STG\Semester8"
+          TopLeft="1014.60859662381,301.730764734631" />
+        <NodeLayout
+          Size="186.56603773585,41.6603773584906"
+          Id="Package\STG\Final_Rate_Destination"
+          TopLeft="668.798832690507,611.316978668114" />
+        <NodeLayout
+          Size="152.150943396227,41.6603773584906"
           Id="Package\STG\Lookup_Course"
           TopLeft="685.347283992367,212.91208473945" />
         <NodeLayout
-          Size="141.6,41.6"
+          Size="141.283018867925,41.6603773584906"
           Id="Package\STG\Sum_SGrade"
           TopLeft="1009.99998494983,126.666664779186" />
+        <NodeLayout
+          Size="179.320754716982,41.6603773584906"
+          Id="Package\STG\Rate_time_dimension"
+          TopLeft="665.27271735939,513.372061061076" />
+        <NodeLayout
+          Size="105.962264150944,41.6603773584906"
+          Id="Package\STG\Sort 1"
+          TopLeft="300.99999551475,332.599995782971" />
+        <NodeLayout
+          Size="104.150943396227,41.6603773584906"
+          Id="Package\STG\Sort 3"
+          TopLeft="1216.66664853692,368.867921895763" />
+        <NodeLayout
+          Size="153.962264150944,41.6603773584906"
+          Id="Package\STG\Lookup_Student"
+          TopLeft="296.999995574355,215.999996781349" />
+        <NodeLayout
+          Size="174.792452830189,41.6603773584906"
+          Id="Package\STG\OLE DB Destination 2 1"
+          TopLeft="1227.5260970921,768.734558739992" />
+        <NodeLayout
+          Size="118.641509433963,41.6603773584906"
+          Id="Package\STG\Lookup 4 1"
+          TopLeft="1323.04038432557,562.061607359674" />
+        <NodeLayout
+          Size="193.811320754717,41.6603773584906"
+          Id="Package\STG\Final_Grade_Destination"
+          TopLeft="265.818177857182,594.672721248595" />
+        <NodeLayout
+          Size="99.622641509434,41.6603773584906"
+          Id="Package\STG\Rate"
+          TopLeft="676.336295115652,22.5824172459133" />
+        <NodeLayout
+          Size="187.471698113208,41.6603773584906"
+          Id="Package\STG\SGrade_time_dimensio"
+          TopLeft="1025.99998471141,534.830183881071" />
+        <NodeLayout
+          Size="186.56603773585,41.6603773584906"
+          Id="Package\STG\Grade_time_dimension"
+          TopLeft="281.818177618764,514.716975388355" />
+        <NodeLayout
+          Size="162.11320754717,41.6603773584906"
+          Id="Package\STG\Lookup_Professor"
+          TopLeft="692.142846829124,318.376618632442" />
+        <NodeLayout
+          Size="159.396226415095,41.6603773584906"
+          Id="Package\STG\Calculated Grade"
+          TopLeft="279.999995827675,425.018862589913" />
+        <NodeLayout
+          Size="112.301886792453,41.6603773584906"
+          Id="Package\STG\Sort 2 1"
+          TopLeft="1254.60026990529,625.133956823078" />
+        <NodeLayout
+          Size="104.150943396227,41.6603773584906"
+          Id="Package\STG\Sort 4"
+          TopLeft="1428.88886759679,293.333329757055" />
+        <NodeLayout
+          Size="126.792452830189,41.6603773584906"
+          Id="Package\STG\Merge Join"
+          TopLeft="1314.4444248577,451.446536807519" />
+        <NodeLayout
+          Size="200.150943396227,41.6603773584906"
+          Id="Package\STG\SGrade_Rate_Destination"
+          TopLeft="1026.13931740727,622.693754380691" />
+        <NodeLayout
+          Size="126.792452830189,41.6603773584906"
+          Id="Package\STG\SortGrade"
+          TopLeft="1058.61536884079,467.790996733442" />
+        <NodeLayout
+          Size="164.830188679246,41.6603773584906"
+          Id="Package\STG\OLE DB Source 1 1 1"
+          TopLeft="1441.66664518416,107.817611438767" />
+        <NodeLayout
+          Size="106.867924528302,41.6603773584906"
+          Id="Package\STG\Grade"
+          TopLeft="289.999995678663,13.0000000447035" />
+        <NodeLayout
+          Size="178.415094339623,41.6603773584906"
+          Id="Package\STG\Average_CourseRate"
+          TopLeft="685.292338938241,126.593404707018" />
+        <NodeLayout
+          Size="172.981132075472,41.6603773584906"
+          Id="Package\STG\Lookup_Department"
+          TopLeft="1037.83331786841,377.333327710629" />
         <EdgeLayout
           Id="Package\STG.Paths[Sort Output5]"
           TopLeft="356.699995671212,374.199995782971">
@@ -10051,40 +9930,6 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Sort Output4]"
-          TopLeft="1268.74212023503,410.528299254254">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="109.098531037756,40.9182375532653"
-              Start="0,0"
-              End="109.098531037756,33.4182375532653">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.4591187766326" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.4591187766326"
-                    Point2="0,20.4591187766326"
-                    Point3="4,20.4591187766326" />
-                  <mssgle:LineSegment
-                    End="105.098531037756,20.4591187766326" />
-                  <mssgle:CubicBezierSegment
-                    Point1="105.098531037756,20.4591187766326"
-                    Point2="109.098531037756,20.4591187766326"
-                    Point3="109.098531037756,24.4591187766326" />
-                  <mssgle:LineSegment
-                    End="109.098531037756,33.4182375532653" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Sort Output3]"
           TopLeft="1308.54121594677,666.794334181569">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10106,7 +9951,7 @@ where [refTable].[StudentID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Sort Output2]"
+          Id="Package\STG.Paths[Sort Output3]"
           TopLeft="743.428561125483,470.427488441801">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10140,7 +9985,7 @@ where [refTable].[StudentID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Sort Output1]"
+          Id="Package\STG.Paths[Sort Output2]"
           TopLeft="1120.7076767761,509.390996733442">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10162,7 +10007,7 @@ where [refTable].[StudentID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Sort Output]"
+          Id="Package\STG.Paths[Sort Output1]"
           TopLeft="1480.9643392949,334.993707115545">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10187,6 +10032,40 @@ where [refTable].[StudentID] = ?</property>
                     Point3="-83.3249458837436,73.0009712729308" />
                   <mssgle:LineSegment
                     End="-83.3249458837436,108.952829691974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Sort Output]"
+          TopLeft="1268.74212023503,410.528299254254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.098531037756,40.9182375532653"
+              Start="0,0"
+              End="109.098531037756,33.4182375532653">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.4591187766326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.4591187766326"
+                    Point2="0,20.4591187766326"
+                    Point3="4,20.4591187766326" />
+                  <mssgle:LineSegment
+                    End="105.098531037756,20.4591187766326" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.098531037756,20.4591187766326"
+                    Point2="109.098531037756,20.4591187766326"
+                    Point3="109.098531037756,24.4591187766326" />
+                  <mssgle:LineSegment
+                    End="109.098531037756,33.4182375532653" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10379,102 +10258,6 @@ where [refTable].[StudentID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\STG.Paths[Lookup Match Output5]"
-          TopLeft="374.199995574355,257.599996781349">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-20.400000059605,74.999999001622"
-              Start="0,0"
-              End="-20.400000059605,67.499999001622">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33.499999500811" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.499999500811"
-                    Point2="0,37.499999500811"
-                    Point3="-4,37.499999500811" />
-                  <mssgle:LineSegment
-                    End="-16.400000059605,37.499999500811" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-16.400000059605,37.499999500811"
-                    Point2="-20.400000059605,37.499999500811"
-                    Point3="-20.400000059605,41.499999500811" />
-                  <mssgle:LineSegment
-                    End="-20.400000059605,67.499999001622" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-58.3913867485525,42.499999500811,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output4]"
-          TopLeft="1123.0243433546,418.933327710629">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.857669022813"
-              Start="0,0"
-              End="0,41.357669022813">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.357669022813" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,14.8741470114065,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output3]"
-          TopLeft="761.347283992367,254.51208473945">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="11.995562836757,63.864533892992"
-              Start="0,0"
-              End="11.995562836757,56.364533892992">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.932266946496" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,27.932266946496"
-                    Point2="0,31.932266946496"
-                    Point3="4,31.932266946496" />
-                  <mssgle:LineSegment
-                    End="7.99556283675702,31.932266946496" />
-                  <mssgle:CubicBezierSegment
-                    Point1="7.99556283675702,31.932266946496"
-                    Point2="11.995562836757,31.932266946496"
-                    Point3="11.995562836757,35.932266946496" />
-                  <mssgle:LineSegment
-                    End="11.995562836757,56.364533892992" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-42.1936053003715,36.932266946496,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output2]"
           TopLeft="1100.83331812173,248.266663587093">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10510,37 +10293,7 @@ where [refTable].[StudentID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output1]"
-          TopLeft="1323.04038432557,582.891796038919">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-12.2891710240501,42.2421607841591"
-              Start="0,0"
-              End="-12.2891710240501,34.7421607841591">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-8.28917102405012,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-8.28917102405012,0"
-                    Point2="-12.2891710240501,0"
-                    Point3="-12.2891710240501,4" />
-                  <mssgle:LineSegment
-                    End="-12.2891710240501,34.7421607841591" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-69.3492100865501,-22,114.120078125,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\STG.Paths[Lookup Match Output]"
+          Id="Package\STG.Paths[Lookup Match Output4]"
           TopLeft="773.342846829124,359.976618632442">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10572,6 +10325,132 @@ where [refTable].[StudentID] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-63.1485295705705,39.4254349046795,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Lookup Match Output3]"
+          TopLeft="1323.04038432557,582.891796038919">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.2891710240501,42.2421607841591"
+              Start="0,0"
+              End="-12.2891710240501,34.7421607841591">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-8.28917102405012,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.28917102405012,0"
+                    Point2="-12.2891710240501,0"
+                    Point3="-12.2891710240501,4" />
+                  <mssgle:LineSegment
+                    End="-12.2891710240501,34.7421607841591" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-69.3492100865501,-22,114.120078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Lookup Match Output2]"
+          TopLeft="1123.0243433546,418.933327710629">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.857669022813"
+              Start="0,0"
+              End="0,41.357669022813">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.357669022813" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.8741470114065,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Lookup Match Output1]"
+          TopLeft="761.347283992367,254.51208473945">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.995562836757,63.864533892992"
+              Start="0,0"
+              End="11.995562836757,56.364533892992">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.932266946496" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.932266946496"
+                    Point2="0,31.932266946496"
+                    Point3="4,31.932266946496" />
+                  <mssgle:LineSegment
+                    End="7.99556283675702,31.932266946496" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.99556283675702,31.932266946496"
+                    Point2="11.995562836757,31.932266946496"
+                    Point3="11.995562836757,35.932266946496" />
+                  <mssgle:LineSegment
+                    End="11.995562836757,56.364533892992" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-42.1936053003715,36.932266946496,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\STG.Paths[Lookup Match Output]"
+          TopLeft="374.199995574355,257.599996781349">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.400000059605,74.999999001622"
+              Start="0,0"
+              End="-20.400000059605,67.499999001622">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.499999500811" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.499999500811"
+                    Point2="0,37.499999500811"
+                    Point3="-4,37.499999500811" />
+                  <mssgle:LineSegment
+                    End="-16.400000059605,37.499999500811" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.400000059605,37.499999500811"
+                    Point2="-20.400000059605,37.499999500811"
+                    Point3="-20.400000059605,41.499999500811" />
+                  <mssgle:LineSegment
+                    End="-20.400000059605,67.499999001622" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-58.3913867485525,42.499999500811,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -10863,190 +10742,7 @@ where [refTable].[StudentID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\STG\Final_Rate_Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup_Department">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Department]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Grade">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Rate">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup_Student">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Student]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup 4 1">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Professor]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\STG\SGrade">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Final_Grade_Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\Lookup_Professor">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[Professor]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\OLE DB Source 1 1 1">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\SGrade_Rate_Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG\OLE DB Destination 2 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11095,6 +10791,19 @@ where [refTable].[StudentID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\STG\Final_Rate_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\STG\Lookup_Course">
     <Properties>
       <Property>
@@ -11106,6 +10815,176 @@ where [refTable].[StudentID] = ?</property>
         <Name>UsedTableName</Name>
         <Value
           type="q3:string">[dbo].[Course]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Lookup_Student">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Student]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Destination 2 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Lookup 4 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Professor]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Final_Grade_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Rate">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Lookup_Professor">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Professor]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\SGrade_Rate_Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\OLE DB Source 1 1 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Grade">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Lookup_Department">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Department]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
