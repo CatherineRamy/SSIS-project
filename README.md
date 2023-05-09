@@ -2,7 +2,7 @@
 
 ## Project steps:
 
-### 1- Git university dataset "Excel Files"<br>
+### 1- Get university dataset "Excel Files"<br>
 *To understand the dataset look at ERD and Excel Files 👇 <br><br>
 [Faculty dataset.xlsx](https://github.com/CatherineRamy/SSIS-project/files/11424417/Faculty.dataset.xlsx) <br> <br>
 ![image](https://user-images.githubusercontent.com/101058082/236911286-05666870-30f3-49d0-a750-04c469dab53b.PNG)<br> <br><br>
